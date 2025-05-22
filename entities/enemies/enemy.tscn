@@ -1,0 +1,191 @@
+[gd_scene load_steps=18 format=3 uid="uid://4uymx28whucl"]
+
+[ext_resource type="Texture2D" uid="uid://641fgsith5t7" path="res://assets/images/entities/enemies/chicken.png" id="1_owq46"]
+[ext_resource type="Script" uid="uid://bh7hygy0hrlrl" path="res://entities/enemies/enemy.gd" id="1_wqcwe"]
+[ext_resource type="Texture2D" uid="uid://cishm85n45fv4" path="res://assets/images/entities/enemies/chicken_captured.png" id="2_twyc1"]
+[ext_resource type="Script" uid="uid://c6q1s5kxw88f5" path="res://resources/enemies/enemy_data.gd" id="2_w4yt1"]
+[ext_resource type="PackedScene" uid="uid://b62c81khntjjv" path="res://addons/state_machine/state_machine.tscn" id="3_5lf1o"]
+[ext_resource type="Script" uid="uid://c2we2hxt7u0g7" path="res://entities/enemies/states/captured.gd" id="4_msovg"]
+[ext_resource type="AudioStream" uid="uid://55176vom3sey" path="res://assets/sounds/Pickup__003.wav" id="7_ipr6v"]
+
+[sub_resource type="Resource" id="Resource_ipr6v"]
+script = ExtResource("2_w4yt1")
+score = 10
+metadata/_custom_type_script = "uid://c6q1s5kxw88f5"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w4yt1"]
+atlas = ExtResource("2_twyc1")
+region = Rect2(0, 0, 21, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbbpy"]
+atlas = ExtResource("1_owq46")
+region = Rect2(0, 0, 21, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ouxo3"]
+atlas = ExtResource("1_owq46")
+region = Rect2(21, 0, 21, 21)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_urvlt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w4yt1")
+}],
+"loop": true,
+"name": &"captured",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mbbpy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ouxo3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d4w6o"]
+
+[sub_resource type="Animation" id="Animation_twyc1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:flip_v")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_msovg"]
+resource_name = "captured_loop"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(6.49802, 0.222452, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1.25), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_w4yt1"]
+resource_name = "walking"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -4), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.766667, 0.900624, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.9, 1.1), Vector2(1, 1), Vector2(1, 1), Vector2(1.1, 0.8)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_twyc1"]
+_data = {
+&"RESET": SubResource("Animation_twyc1"),
+&"captured_loop": SubResource("Animation_msovg"),
+&"walking": SubResource("Animation_w4yt1")
+}
+
+[node name="Enemy" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("1_wqcwe")
+enemy_data = SubResource("Resource_ipr6v")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_urvlt")
+frame = 1
+frame_progress = 0.791431
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, 3)
+shape = SubResource("CircleShape2D_d4w6o")
+
+[node name="StateMachine" parent="." node_paths=PackedStringArray("entity") instance=ExtResource("3_5lf1o")]
+position = Vector2(0, -1)
+entity = NodePath("..")
+
+[node name="Captured" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("animation_player", "capture_audio")]
+script = ExtResource("4_msovg")
+animation_player = NodePath("../../AnimationPlayer")
+capture_audio = NodePath("../../CapturedAudio")
+metadata/_custom_type_script = "uid://cnigx0jnsyk33"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_twyc1")
+}
+autoplay = "walking"
+speed_scale = 3.0
+
+[node name="CapturedAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_ipr6v")
+volume_db = -5.0
+
+[connection signal="on_captured" from="." to="StateMachine/Captured" method="_on_enemy_on_captured"]

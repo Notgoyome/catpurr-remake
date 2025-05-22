@@ -1,0 +1,238 @@
+[gd_scene load_steps=21 format=4 uid="uid://cxc6vpsrngtfm"]
+
+[ext_resource type="Script" uid="uid://b4njrt2oi8f5k" path="res://entities/player/player.gd" id="1_l17oj"]
+[ext_resource type="Script" uid="uid://dw2h1a07qy7kn" path="res://resources/player/player_data.gd" id="2_mpktj"]
+[ext_resource type="PackedScene" uid="uid://xs4yu2eino3w" path="res://entities/player/components/capture_component.tscn" id="4_fkugw"]
+[ext_resource type="Script" uid="uid://gbeg1qbatoq3" path="res://entities/player/components/movement_component.gd" id="4_mpktj"]
+[ext_resource type="Script" uid="uid://bsj330pgn2fuf" path="res://addons/state_machine/state_machine.gd" id="6_8fjmc"]
+[ext_resource type="Texture2D" uid="uid://ilnrn63xj5yg" path="res://assets/images/entities/player/shadow.png" id="6_bectd"]
+[ext_resource type="Script" uid="uid://dxpptmahlq2iv" path="res://entities/player/jumping.gd" id="6_wvtmh"]
+[ext_resource type="Script" uid="uid://btnwx1es7t8c5" path="res://entities/player/states/normal.gd" id="7_qiwj3"]
+[ext_resource type="Script" uid="uid://hisd70cg2dli" path="res://entities/player/states/capturing.gd" id="8_26q78"]
+[ext_resource type="Script" uid="uid://cge6484wh424g" path="res://entities/player/components/health_component.gd" id="9_bectd"]
+
+[sub_resource type="Resource" id="Resource_26q78"]
+script = ExtResource("2_mpktj")
+speed = 80.0
+time_to_max_speed = 0.1
+time_to_stop = 0.1
+_acceleration = 2000.0
+rope_distance = 100.0
+rope_speed = 400.0
+rope_recover_speed = 500.0
+rope_capture_wait_time = 0.4
+metadata/_custom_type_script = "uid://dw2h1a07qy7kn"
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_26q78"]
+_data = PackedByteArray("AAADAAUAAAABAAAAMAAAADAAAAD8AAAAUklGRvQAAABXRUJQVlA4TOcAAAAvL8ALEC+gqI0U6LkSTjSgAP+2sEEkQBKJPHCK+3ytojZSoN9egBP8K8EPAoIi/0eL/w/cZKfjBtsDyK1tx22+hxTA3wEvyBLcgEDtDTqv/140IC/zNqL/aNu2DTOlk5B+UX73VBK8BjH7xw2VrOoyGtBGTsP0G/rm9bAaQJLTIOkTDWPgNLxFSOk0RMTTaeDQtnJoOOgHy7uYGu1w57mCWjloytmXY8Rcs54ACXCKyArl35tKgkfMbr1WdRnQRo7p65vXwwLuIn3CGDjeIqR0RMTTgd521jIaw7vb0upw/gWgAuV3TQEA")
+size_override = Vector2(48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bectd"]
+atlas = SubResource("PortableCompressedTexture2D_26q78")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wvtmh"]
+atlas = SubResource("PortableCompressedTexture2D_26q78")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7thud"]
+atlas = SubResource("PortableCompressedTexture2D_26q78")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a1qjk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bectd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wvtmh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7thud")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wvtmh")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bls4j"]
+size = Vector2(16, 7)
+
+[sub_resource type="Animation" id="Animation_7thud"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerBody:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Shadow:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerBody:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_wvtmh"]
+resource_name = "jump"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerBody:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.366667, 1),
+"transitions": PackedFloat32Array(0.353553, 2, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -24), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerBody:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.333333, 0.433333, 1),
+"transitions": PackedFloat32Array(0.35, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.8, 1.2), Vector2(1, 1), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Shadow:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.366733, 1),
+"transitions": PackedFloat32Array(0.353, 2, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.6, 0.6), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7thud"]
+_data = {
+&"RESET": SubResource("Animation_7thud"),
+&"jump": SubResource("Animation_wvtmh")
+}
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_l17oj")
+player_data = SubResource("Resource_26q78")
+
+[node name="StateMachine" type="Node2D" parent="." node_paths=PackedStringArray("initial_state", "entity")]
+script = ExtResource("6_8fjmc")
+initial_state = NodePath("Normal")
+entity = NodePath("..")
+metadata/_custom_type_script = "uid://bsj330pgn2fuf"
+
+[node name="Normal" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("capture_component", "movement_component")]
+script = ExtResource("7_qiwj3")
+capture_component = NodePath("../../PlayerBody/CaptureComponent")
+movement_component = NodePath("../../MovementComponent")
+metadata/_custom_type_script = "uid://cnigx0jnsyk33"
+
+[node name="Capturing" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("movement_component")]
+position = Vector2(0, 1)
+script = ExtResource("8_26q78")
+movement_component = NodePath("../../MovementComponent")
+metadata/_custom_type_script = "uid://cnigx0jnsyk33"
+
+[node name="Jumping" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("animation_player")]
+script = ExtResource("6_wvtmh")
+animation_player = NodePath("../../AnimationPlayer")
+metadata/_custom_type_script = "uid://cnigx0jnsyk33"
+
+[node name="PlayerBody" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="CaptureComponent" parent="PlayerBody" node_paths=PackedStringArray("player") instance=ExtResource("4_fkugw")]
+unique_name_in_owner = true
+player = NodePath("../..")
+
+[node name="Cat" type="AnimatedSprite2D" parent="PlayerBody"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_a1qjk")
+animation = &"walking"
+autoplay = "walking"
+frame_progress = 0.556179
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"embed_tex": true,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"should_round_fps": true,
+"slice": "",
+"source": "res://assets/images/entities/player/cat.ase",
+"source_uid": 7194391947236180513
+}
+metadata/_aseprite_wizard_source_file_hash_ = "db2d5d68651a745e3b6070d7873c8633"
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.631373)
+z_index = -2
+position = Vector2(0, 8)
+texture = ExtResource("6_bectd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4.5)
+shape = SubResource("RectangleShape2D_bls4j")
+debug_color = Color(0, 0.595, 0.7, 0)
+
+[node name="MovementComponent" type="Node" parent="."]
+script = ExtResource("4_mpktj")
+
+[node name="HealthComponent" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("9_bectd")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_7thud")
+}
+speed_scale = 2.0
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[connection signal="on_returning" from="PlayerBody/CaptureComponent/Rope" to="StateMachine/Capturing" method="_on_rope_on_returning"]
+[connection signal="on_waiting" from="PlayerBody/CaptureComponent/Rope" to="StateMachine/Capturing" method="_on_rope_on_waiting"]
+
+[editable path="PlayerBody/CaptureComponent"]

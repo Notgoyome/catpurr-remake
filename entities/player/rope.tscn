@@ -1,0 +1,125 @@
+[gd_scene load_steps=9 format=3 uid="uid://clu2bjfenxymq"]
+
+[ext_resource type="Script" uid="uid://d2bm53e7epbn" path="res://entities/player/rope.gd" id="1_2ymuj"]
+[ext_resource type="Script" uid="uid://dtiab0euj0ysi" path="res://entities/player/rope/rope_animation.gd" id="3_aw0mr"]
+[ext_resource type="Texture2D" uid="uid://drdurpmfebhax" path="res://assets/images/tilemaps/tilemap_packed.png" id="3_gab08"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8fjmc"]
+radius = 4.0
+
+[sub_resource type="Animation" id="Animation_gab08"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hitbox/LoopSprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_aw0mr"]
+resource_name = "return"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hitbox/LoopSprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1.10957, 1),
+"update": 0,
+"values": [Vector2(1.1, 0.75), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rope:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1.10957, 1),
+"update": 0,
+"values": [Vector2(1, 0.75), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2p0gw"]
+resource_name = "throw"
+length = 0.17
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hitbox/LoopSprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.17),
+"transitions": PackedFloat32Array(1, 0.287174, 0.287174),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 0.75), Vector2(1.1, 0.75)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rope:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.17),
+"transitions": PackedFloat32Array(1, 0.287174),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 0.75)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uthbo"]
+_data = {
+&"RESET": SubResource("Animation_gab08"),
+&"return": SubResource("Animation_aw0mr"),
+&"throw": SubResource("Animation_2p0gw")
+}
+
+[node name="Lasso" type="Node2D"]
+script = ExtResource("1_2ymuj")
+
+[node name="Rope" type="NinePatchRect" parent="."]
+unique_name_in_owner = true
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 4.0
+offset_bottom = 4.0
+scale = Vector2(1, 0.75)
+texture = ExtResource("3_gab08")
+region_rect = Rect2(144, 100, 18, 10)
+patch_margin_left = 4
+patch_margin_right = 3
+
+[node name="Hitbox" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 8
+
+[node name="LoopSprite" type="Sprite2D" parent="Hitbox"]
+texture = ExtResource("3_gab08")
+hframes = 12
+vframes = 11
+frame = 107
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_8fjmc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_uthbo")
+}
+script = ExtResource("3_aw0mr")
+
+[connection signal="on_returning" from="." to="AnimationPlayer" method="_on_lasso_on_returning"]
+[connection signal="on_throwing" from="." to="AnimationPlayer" method="_on_lasso_on_throwing"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

@@ -1,0 +1,111 @@
+[gd_scene load_steps=8 format=3 uid="uid://do68no0xq8mge"]
+
+[ext_resource type="Theme" uid="uid://cldnd0m2hso1b" path="res://assets/theme.tres" id="1_0dg7g"]
+[ext_resource type="Script" uid="uid://dr3215ojpl071" path="res://ui/button.gd" id="2_7krdg"]
+
+[sub_resource type="Shader" id="Shader_7krdg"]
+code = "shader_type canvas_item;
+uniform vec4 color: source_color;
+uniform vec4 to_color: source_color;
+void vertex() {
+	// Called for every vertex the material is visible on.
+}
+
+void fragment() {
+	COLOR = texture(TEXTURE, UV);
+	if (COLOR == color) {
+		COLOR = to_color;
+	}
+	
+	// Called for every pixel the material is visible on.
+}
+
+//void light() {
+//	// Called for every pixel for every light affecting the CanvasItem.
+//	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7krdg"]
+shader = SubResource("Shader_7krdg")
+shader_parameter/color = Color(0.976471, 0.639216, 0.105882, 1)
+shader_parameter/to_color = Color(0.976471, 0.639216, 0.105882, 1)
+
+[sub_resource type="Animation" id="Animation_fxfmk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/to_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.976471, 0.639216, 0.105882, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_7krdg"]
+resource_name = "up"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.267943, 0.31864),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-16, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/to_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.976471, 0.639216, 0.105882, 1), Color(1, 0.835294, 0.254902, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fxfmk"]
+_data = {
+&"RESET": SubResource("Animation_fxfmk"),
+&"up": SubResource("Animation_7krdg")
+}
+
+[node name="PlayButton" type="Button"]
+material = SubResource("ShaderMaterial_7krdg")
+offset_right = 60.0
+offset_bottom = 32.0
+theme = ExtResource("1_0dg7g")
+text = "PLAY"
+script = ExtResource("2_7krdg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_fxfmk")
+}
+speed_scale = 1.5
+
+[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
+[connection signal="focus_exited" from="." to="." method="_on_focus_exited"]

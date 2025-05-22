@@ -1,0 +1,125 @@
+[gd_scene load_steps=17 format=3 uid="uid://v8k4iceekoue"]
+
+[ext_resource type="PackedScene" uid="uid://4uymx28whucl" path="res://entities/enemies/enemy.tscn" id="1_2lc1s"]
+[ext_resource type="Script" uid="uid://bk4myjs2x4s20" path="res://entities/enemies/states/intro.gd" id="2_mc3h4"]
+[ext_resource type="Script" uid="uid://c2shrf0xhbv4e" path="res://entities/enemies/chicken.gd" id="2_q0h1e"]
+[ext_resource type="Texture2D" uid="uid://cishm85n45fv4" path="res://assets/images/entities/enemies/chicken_captured.png" id="3_xfttu"]
+[ext_resource type="Texture2D" uid="uid://641fgsith5t7" path="res://assets/images/entities/enemies/chicken.png" id="3_xjn0u"]
+[ext_resource type="Texture2D" uid="uid://cu3hwlv8ivbog" path="res://assets/images/particles/round_8x8.png" id="6_1tke6"]
+[ext_resource type="Script" uid="uid://0s3xjqad3epo" path="res://entities/enemies/components/stress_particle.gd" id="7_trwhp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1tke6"]
+atlas = ExtResource("3_xfttu")
+region = Rect2(0, 0, 21, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbbpy"]
+atlas = ExtResource("3_xjn0u")
+region = Rect2(0, 0, 21, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ouxo3"]
+atlas = ExtResource("3_xjn0u")
+region = Rect2(21, 0, 21, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_icy5c"]
+atlas = ExtResource("3_xjn0u")
+region = Rect2(42, 0, 21, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rmjfq"]
+atlas = ExtResource("3_xjn0u")
+region = Rect2(63, 0, 21, 21)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xfttu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1tke6")
+}],
+"loop": true,
+"name": &"captured",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mbbpy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ouxo3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_icy5c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rmjfq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_1tke6"]
+offsets = PackedFloat32Array(0.663102, 1)
+colors = PackedColorArray(0.45, 0.67, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Curve" id="Curve_1tke6"]
+_limits = [-200.0, 200.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.3, 0), 30.3319, 30.3319, 0, 0, Vector2(1, 22.3292), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_trwhp"]
+bake_resolution = 4
+_data = [Vector2(0, 0.630895), 0.0, 0.0, 0, 0, Vector2(0.1925, 1), 0.0, 0.0, 0, 0, Vector2(0.735, 0.174206), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[node name="Chicken" instance=ExtResource("1_2lc1s")]
+script = ExtResource("2_q0h1e")
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+unique_name_in_owner = true
+position = Vector2(0, 1)
+sprite_frames = SubResource("SpriteFrames_xfttu")
+autoplay = "default"
+
+[node name="StateMachine" parent="." index="2" node_paths=PackedStringArray("initial_state")]
+initial_state = NodePath("Intro")
+
+[node name="Intro" type="Node2D" parent="StateMachine" index="0"]
+script = ExtResource("2_mc3h4")
+speed_intro = 80.0
+metadata/_custom_type_script = "uid://cnigx0jnsyk33"
+
+[node name="StressParticle" type="CPUParticles2D" parent="StateMachine/Captured" index="0"]
+position = Vector2(0, 1)
+amount = 4
+texture = ExtResource("6_1tke6")
+lifetime = 0.5
+randomness = 1.0
+direction = Vector2(0, -1)
+gravity = Vector2(0, 200)
+initial_velocity_min = 32.0
+initial_velocity_max = 48.0
+scale_amount_min = 0.3
+scale_amount_max = 0.5
+color_ramp = SubResource("Gradient_1tke6")
+script = ExtResource("7_trwhp")
+
+[node name="CapturedParticule" type="CPUParticles2D" parent="." index="3"]
+unique_name_in_owner = true
+emitting = false
+amount = 20
+one_shot = true
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 20.0
+direction = Vector2(1, 1)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 2.0
+initial_velocity_max = 20.0
+linear_accel_min = -20.0
+linear_accel_max = -20.0
+linear_accel_curve = SubResource("Curve_1tke6")
+scale_amount_min = 2.0
+scale_amount_max = 6.0
+scale_amount_curve = SubResource("Curve_trwhp")
+
+[node name="ThrowComponent" type="Node2D" parent="." index="5"]

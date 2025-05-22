@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://xs4yu2eino3w"]
+
+[ext_resource type="Script" uid="uid://cpqim8oh7q0cy" path="res://entities/player/components/capture_component.gd" id="1_lqgjd"]
+[ext_resource type="PackedScene" uid="uid://clu2bjfenxymq" path="res://entities/player/rope.tscn" id="2_kwmtt"]
+
+[node name="CaptureComponent" type="Node2D"]
+script = ExtResource("1_lqgjd")
+
+[node name="Rope" parent="." instance=ExtResource("2_kwmtt")]
+unique_name_in_owner = true
+position = Vector2(10, 1)

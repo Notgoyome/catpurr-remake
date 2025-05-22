@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://xlf02d6lk4e2"]
+
+[ext_resource type="Texture2D" uid="uid://xkagkfdxu8li" path="res://assets/images/ui/hp.png" id="1_rxo61"]
+
+[node name="LifeUI" type="TextureRect"]
+texture = ExtResource("1_rxo61")

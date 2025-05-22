@@ -1,0 +1,225 @@
+[gd_scene load_steps=12 format=4 uid="uid://djwti07bl1m4i"]
+
+[ext_resource type="Script" uid="uid://4f2dc17goei0" path="res://globals/transition_manager_scene.gd" id="1_iujwo"]
+
+[sub_resource type="Animation" id="Animation_iujwo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.138167, 0.13, 0.2, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(304, 168)]
+}
+
+[sub_resource type="Animation" id="Animation_5rmc1"]
+resource_name = "RESET_2"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.138167, 0.13, 0.2, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_v6aub"]
+resource_name = "end"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.336667, 0.9),
+"transitions": PackedFloat32Array(1, 1, 0.353553),
+"update": 0,
+"values": [Color(0.138167, 0.13, 0.2, 1), Color(0.138167, 0.13, 0.2, 1), Color(0.138167, 0.13, 0.2, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(304, 168), Vector2(344, 168)]
+}
+
+[sub_resource type="Animation" id="Animation_lslml"]
+resource_name = "start"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(0.353553, 1),
+"update": 0,
+"values": [Color(0.138167, 0.13, 0.2, 0), Color(0.138167, 0.13, 0.2, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iujwo"]
+_data = {
+&"RESET": SubResource("Animation_iujwo"),
+&"RESET_2": SubResource("Animation_5rmc1"),
+&"end": SubResource("Animation_v6aub"),
+&"start": SubResource("Animation_lslml")
+}
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_lslml"]
+_data = PackedByteArray("AAADAAUAAAABAAAAMAAAADAAAAD8AAAAUklGRvQAAABXRUJQVlA4TOcAAAAvL8ALEC+gqI0U6LkSTjSgAP+2sEEkQBKJPHCK+3ytojZSoN9egBP8K8EPAoIi/0eL/w/cZKfjBtsDyK1tx22+hxTA3wEvyBLcgEDtDTqv/140IC/zNqL/aNu2DTOlk5B+UX73VBK8BjH7xw2VrOoyGtBGTsP0G/rm9bAaQJLTIOkTDWPgNLxFSOk0RMTTaeDQtnJoOOgHy7uYGu1w57mCWjloytmXY8Rcs54ACXCKyArl35tKgkfMbr1WdRnQRo7p65vXwwLuIn3CGDjeIqR0RMTTgd521jIaw7vb0upw/gWgAuV3TQEA")
+size_override = Vector2(48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iujwo"]
+atlas = SubResource("PortableCompressedTexture2D_lslml")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5rmc1"]
+atlas = SubResource("PortableCompressedTexture2D_lslml")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v6aub"]
+atlas = SubResource("PortableCompressedTexture2D_lslml")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rkxuy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iujwo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5rmc1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v6aub")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5rmc1")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 10.0
+}]
+
+[node name="TransitionManagerScene" type="CanvasLayer"]
+process_mode = 3
+layer = 50
+script = ExtResource("1_iujwo")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.138167, 0.13, 0.2, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_iujwo")
+}
+speed_scale = 4.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(304, 168)
+sprite_frames = SubResource("SpriteFrames_rkxuy")
+animation = &"walking"
+frame_progress = 0.719948
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"embed_tex": true,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"should_round_fps": true,
+"slice": "",
+"source": "res://assets/images/entities/player/cat.ase",
+"source_uid": 7194391947236180513
+}
+metadata/_aseprite_wizard_source_file_hash_ = "db2d5d68651a745e3b6070d7873c8633"

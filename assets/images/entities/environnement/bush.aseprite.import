@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://cdouc4kv45o1r"
+path="res://.godot/imported/bush.aseprite-4f639858a626412fe11456c052482305.res"
+
+[deps]
+
+source_file="res://assets/images/entities/environnement/bush.aseprite"
+dest_files=["res://.godot/imported/bush.aseprite-4f639858a626412fe11456c052482305.res"]
+
+[params]
+
