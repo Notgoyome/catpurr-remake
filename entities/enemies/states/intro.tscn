@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://b24wfeqf40ctx"]
+
+[ext_resource type="Script" uid="uid://bk4myjs2x4s20" path="res://entities/enemies/states/intro.gd" id="1_riixk"]
+
+[node name="Intro" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_riixk")
+speed_intro = 60.0
+direction = Vector2(-1, 0)
+next_state_on_limit_reached = "Attack"
+metadata/_custom_type_script = "uid://cnigx0jnsyk33"

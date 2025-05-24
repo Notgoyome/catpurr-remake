@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://cny5mdgqt0etr"
+path="res://.godot/imported/grid.aseprite-7f8f81f22701b4e2e9f05ec242d75a11.res"
+
+[deps]
+
+source_file="res://assets/images/ui/grid.aseprite"
+dest_files=["res://.godot/imported/grid.aseprite-7f8f81f22701b4e2e9f05ec242d75a11.res"]
+
+[params]
+

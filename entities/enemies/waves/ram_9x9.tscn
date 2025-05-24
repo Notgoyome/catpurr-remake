@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://bbjgm8l6d01xh"]
+
+[ext_resource type="PackedScene" uid="uid://bqcxmchtofjdr" path="res://entities/enemies/waves/wave.tscn" id="1_5n6hw"]
+[ext_resource type="PackedScene" uid="uid://dwk06glyq4rg7" path="res://entities/enemies/rams/ram.tscn" id="2_88gkd"]
+[ext_resource type="Texture2D" uid="uid://b3y5ywggoyi1y" path="res://assets/images/particles/diamond_8x8.png" id="3_88gkd"]
+
+[sub_resource type="Curve" id="Curve_88gkd"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="RamWave" instance=ExtResource("1_5n6hw")]
+
+[node name="Enemy2" parent="." index="0" instance=ExtResource("2_88gkd")]
+position = Vector2(56, 0)
+
+[node name="Enemy3" parent="." index="1" instance=ExtResource("2_88gkd")]
+position = Vector2(56, 16)
+
+[node name="Enemy4" parent="." index="2" instance=ExtResource("2_88gkd")]
+position = Vector2(56, 32)
+
+[node name="Enemy5" parent="." index="3" instance=ExtResource("2_88gkd")]
+position = Vector2(32, 0)
+
+[node name="Enemy6" parent="." index="4" instance=ExtResource("2_88gkd")]
+position = Vector2(32, 16)
+
+[node name="CanvasGroup" type="CanvasGroup" parent="Enemy6" index="8"]
+self_modulate = Color(0.93, 0.979, 1, 0.87451)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Enemy6/CanvasGroup" index="0"]
+amount = 25
+texture = ExtResource("3_88gkd")
+explosiveness = 0.3
+emission_shape = 1
+emission_sphere_radius = 40.0
+spread = 180.0
+gravity = Vector2(50, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 40.0
+orbit_velocity_max = 0.2
+scale_amount_max = 2.5
+scale_amount_curve = SubResource("Curve_88gkd")
+
+[node name="Enemy7" parent="." index="5" instance=ExtResource("2_88gkd")]
+position = Vector2(32, 32)
+
+[node name="Enemy8" parent="." index="6" instance=ExtResource("2_88gkd")]
+position = Vector2(8, 0)
+
+[node name="Enemy9" parent="." index="7" instance=ExtResource("2_88gkd")]
+position = Vector2(8, 16)
+
+[node name="Enemy10" parent="." index="8" instance=ExtResource("2_88gkd")]
+position = Vector2(8, 32)

@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bduo3oxmk58lk"
+path="res://.godot/imported/chicken_captured.aseprite-8454650e50d9399a9ad13f76356624aa.res"
+
+[deps]
+
+source_file="res://assets/images/entities/enemies/chicken_diagonal/chicken_captured.aseprite"
+dest_files=["res://.godot/imported/chicken_captured.aseprite-8454650e50d9399a9ad13f76356624aa.res"]
+
+[params]
+

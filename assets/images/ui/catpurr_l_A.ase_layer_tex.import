@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.static-texture-split-layer"
+type="PortableCompressedTexture2D"
+uid="uid://dkrad15dk8j73"
+path="res://.godot/imported/catpurr_l_A.ase_layer_tex-ac59c1bbae6d4192c4e9739533b59747.res"
+
+[deps]
+
+source_file="res://assets/images/ui/catpurr_l_A.ase_layer_tex"
+dest_files=["res://.godot/imported/catpurr_l_A.ase_layer_tex-ac59c1bbae6d4192c4e9739533b59747.res"]
+
+[params]
+

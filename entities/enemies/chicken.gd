@@ -7,7 +7,8 @@ class_name Chicken
 @export var random_direction: bool = true
 
 func _ready() -> void:
-	intro.set_random_direction(random_direction)
+	if random_direction:
+		intro.set_random_direction()
 	pass
 
 func set_captured(_rope: Rope) -> void:

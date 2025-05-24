@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://boxtb2mbr6xkr"]
+
+[ext_resource type="Script" uid="uid://c2we2hxt7u0g7" path="res://entities/enemies/states/captured.gd" id="1_5kkdp"]
+
+[node name="State" type="Node2D"]
+script = ExtResource("1_5kkdp")
+metadata/_custom_type_script = "uid://cnigx0jnsyk33"

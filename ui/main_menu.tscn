@@ -1,48 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://cpwau54raobl4"]
+[gd_scene load_steps=7 format=3 uid="uid://cpwau54raobl4"]
 
 [ext_resource type="Script" uid="uid://3s6hkk863ghb" path="res://ui/main_menu.gd" id="1_0dkrt"]
 [ext_resource type="PackedScene" uid="uid://boppjtnktgfvk" path="res://ui/components/ui_manager_component.tscn" id="1_t7e0r"]
-[ext_resource type="PackedScene" uid="uid://dsl0kv6s3m8q7" path="res://scenes/levels/level.tscn" id="2_ei257"]
 [ext_resource type="Theme" uid="uid://cldnd0m2hso1b" path="res://assets/theme.tres" id="3_rmr83"]
 [ext_resource type="Texture2D" uid="uid://bvr24xd2vf8qx" path="res://assets/images/ui/catpurr.png" id="3_wk0pr"]
 [ext_resource type="PackedScene" uid="uid://do68no0xq8mge" path="res://ui/button.tscn" id="4_8uxxo"]
-
-[sub_resource type="Animation" id="Animation_8uxxo"]
-resource_name = "loop_move"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Panel:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(0.450625, 0.574349, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, -2), Vector2(0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_ei257"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Panel:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ei257"]
-_data = {
-&"RESET": SubResource("Animation_ei257"),
-&"loop_move": SubResource("Animation_8uxxo")
-}
+[ext_resource type="PackedScene" uid="uid://bcj14t6umrjkj" path="res://ui/buttons/play_button.tscn" id="4_ei257"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -52,7 +15,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0dkrt")
-start_scene = ExtResource("2_ei257")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -90,11 +52,13 @@ layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("3_rmr83")
 
-[node name="PlayButton" parent="BoxContainer/ButtonBox/Panel" instance=ExtResource("4_8uxxo")]
+[node name="PlayButton" parent="BoxContainer/ButtonBox/Panel" instance=ExtResource("4_ei257")]
 unique_name_in_owner = true
-layout_mode = 2
+layout_mode = 0
 offset_right = 96.0
 offset_bottom = 24.0
+theme_override_constants/outline_size = 0
+text = "Play"
 
 [node name="Panel2" type="Panel" parent="BoxContainer/ButtonBox"]
 layout_mode = 2
@@ -105,6 +69,7 @@ theme = ExtResource("3_rmr83")
 layout_mode = 2
 offset_right = 96.0
 offset_bottom = 24.0
+text = "Settings"
 
 [node name="Panel3" type="Panel" parent="BoxContainer/ButtonBox"]
 layout_mode = 2
@@ -115,25 +80,16 @@ theme = ExtResource("3_rmr83")
 layout_mode = 2
 offset_right = 96.0
 offset_bottom = 24.0
+text = "Quit"
 
 [node name="Panel" type="Control" parent="."]
 anchors_preset = 0
-offset_top = -0.013829
-offset_bottom = -0.013829
 theme = ExtResource("3_rmr83")
 
 [node name="TextureRect" type="TextureRect" parent="Panel"]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0
-offset_right = 199.0
-offset_bottom = 60.0
+offset_right = 48.0
+offset_bottom = 48.0
 texture = ExtResource("3_wk0pr")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_ei257")
-}
-speed_scale = 0.4
-
-[connection signal="pressed" from="BoxContainer/ButtonBox/Panel/PlayButton" to="." method="_on_play_button_pressed"]

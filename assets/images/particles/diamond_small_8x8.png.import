@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cishm85n45fv4"
-path="res://.godot/imported/chicken_captured.png-c4341a1aa36f8ff1662f6e122e11f47d.ctex"
+uid="uid://s2hpve5fng8s"
+path="res://.godot/imported/diamond_small_8x8.png-e6dc923cb689245f24cc3283ec94a326.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/entities/enemies/chicken_captured.png"
-dest_files=["res://.godot/imported/chicken_captured.png-c4341a1aa36f8ff1662f6e122e11f47d.ctex"]
+source_file="res://assets/images/particles/diamond_small_8x8.png"
+dest_files=["res://.godot/imported/diamond_small_8x8.png-e6dc923cb689245f24cc3283ec94a326.ctex"]
 
 [params]
 

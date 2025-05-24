@@ -206,6 +206,7 @@ texture_filter = 1
 position = Vector2(304, 168)
 sprite_frames = SubResource("SpriteFrames_rkxuy")
 animation = &"walking"
+autoplay = "walking"
 frame_progress = 0.719948
 metadata/_aseprite_wizard_interface_config_ = {
 "pending_changes": {}

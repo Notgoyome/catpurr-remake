@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://cxc6vpsrngtfm"]
+[gd_scene load_steps=23 format=4 uid="uid://cxc6vpsrngtfm"]
 
 [ext_resource type="Script" uid="uid://b4njrt2oi8f5k" path="res://entities/player/player.gd" id="1_l17oj"]
 [ext_resource type="Script" uid="uid://dw2h1a07qy7kn" path="res://resources/player/player_data.gd" id="2_mpktj"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://bsj330pgn2fuf" path="res://addons/state_machine/state_machine.gd" id="6_8fjmc"]
 [ext_resource type="Texture2D" uid="uid://ilnrn63xj5yg" path="res://assets/images/entities/player/shadow.png" id="6_bectd"]
 [ext_resource type="Script" uid="uid://dxpptmahlq2iv" path="res://entities/player/jumping.gd" id="6_wvtmh"]
+[ext_resource type="Script" uid="uid://dbhhjmytcwxm1" path="res://entities/player/states/dying.gd" id="7_7thud"]
 [ext_resource type="Script" uid="uid://btnwx1es7t8c5" path="res://entities/player/states/normal.gd" id="7_qiwj3"]
 [ext_resource type="Script" uid="uid://hisd70cg2dli" path="res://entities/player/states/capturing.gd" id="8_26q78"]
 [ext_resource type="Script" uid="uid://cge6484wh424g" path="res://entities/player/components/health_component.gd" id="9_bectd"]
@@ -18,49 +19,61 @@ time_to_max_speed = 0.1
 time_to_stop = 0.1
 _acceleration = 2000.0
 rope_distance = 100.0
-rope_speed = 400.0
-rope_recover_speed = 500.0
-rope_capture_wait_time = 0.4
+rope_speed = 600.0
+rope_recover_speed = 700.0
+rope_capture_wait_time = 0.2
 metadata/_custom_type_script = "uid://dw2h1a07qy7kn"
 
-[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_26q78"]
-_data = PackedByteArray("AAADAAUAAAABAAAAMAAAADAAAAD8AAAAUklGRvQAAABXRUJQVlA4TOcAAAAvL8ALEC+gqI0U6LkSTjSgAP+2sEEkQBKJPHCK+3ytojZSoN9egBP8K8EPAoIi/0eL/w/cZKfjBtsDyK1tx22+hxTA3wEvyBLcgEDtDTqv/140IC/zNqL/aNu2DTOlk5B+UX73VBK8BjH7xw2VrOoyGtBGTsP0G/rm9bAaQJLTIOkTDWPgNLxFSOk0RMTTaeDQtnJoOOgHy7uYGu1w57mCWjloytmXY8Rcs54ACXCKyArl35tKgkfMbr1WdRnQRo7p65vXwwLuIn3CGDjeIqR0RMTTgd521jIaw7vb0upw/gWgAuV3TQEA")
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_7thud"]
+_data = PackedByteArray("AAADAAUAAAABAAAAMAAAADAAAAAkAQAAUklGRhwBAABXRUJQVlA4TBABAAAvL8ALECdAmG30nD/AbEZwQqdBmG30nPL4pnQAp6ZtI2juXBrlD+67ExAU+T9a/D8gx5ekwXUjyVVkkYElB4DmNgJMArvu/IOCNfe++43oPwO3kZyY3gP8on734DR4rEFY3G9wmiv0QAM66JEGe7whDhYPNYCkRxokPdHQO480LKVI7ZGGUsr6SAOpbSM1JJHsN2HqI31n20CjJkPNYs8RtjWfAA1gimgO9e8NToPHCIsZOC3vdYUuWKATOuiSLLEHKIuDxUNgngEYYXlDmrgpDxd6J736HUspUsvLpWjrIyulrImmBmqKXqYGR7khSLM+6Ipjlh7HflOkG+3DuyVBb3UfdgJwODfyr+KM+PihAg==")
 size_override = Vector2(48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bectd"]
-atlas = SubResource("PortableCompressedTexture2D_26q78")
+[sub_resource type="AtlasTexture" id="AtlasTexture_a1qjk"]
+atlas = SubResource("PortableCompressedTexture2D_7thud")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j3ovn"]
+atlas = SubResource("PortableCompressedTexture2D_7thud")
 region = Rect2(0, 0, 24, 24)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wvtmh"]
-atlas = SubResource("PortableCompressedTexture2D_26q78")
+[sub_resource type="AtlasTexture" id="AtlasTexture_afbqv"]
+atlas = SubResource("PortableCompressedTexture2D_7thud")
 region = Rect2(24, 0, 24, 24)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7thud"]
-atlas = SubResource("PortableCompressedTexture2D_26q78")
+[sub_resource type="AtlasTexture" id="AtlasTexture_gx6sm"]
+atlas = SubResource("PortableCompressedTexture2D_7thud")
 region = Rect2(0, 24, 24, 24)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_a1qjk"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_yqrof"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bectd")
+"texture": SubResource("AtlasTexture_a1qjk")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j3ovn")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wvtmh")
+"texture": SubResource("AtlasTexture_afbqv")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7thud")
+"texture": SubResource("AtlasTexture_gx6sm")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wvtmh")
+"texture": SubResource("AtlasTexture_afbqv")
 }],
 "loop": true,
 "name": &"walking",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bls4j"]
-size = Vector2(16, 7)
+size = Vector2(10, 8)
 
 [sub_resource type="Animation" id="Animation_7thud"]
 length = 0.001
@@ -147,12 +160,13 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D"]
-collision_layer = 2
+collision_layer = 6
 collision_mask = 0
 script = ExtResource("1_l17oj")
 player_data = SubResource("Resource_26q78")
 
 [node name="StateMachine" type="Node2D" parent="." node_paths=PackedStringArray("initial_state", "entity")]
+unique_name_in_owner = true
 script = ExtResource("6_8fjmc")
 initial_state = NodePath("Normal")
 entity = NodePath("..")
@@ -175,6 +189,11 @@ script = ExtResource("6_wvtmh")
 animation_player = NodePath("../../AnimationPlayer")
 metadata/_custom_type_script = "uid://cnigx0jnsyk33"
 
+[node name="Dying" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("player_animation")]
+script = ExtResource("7_7thud")
+player_animation = NodePath("../../AnimationPlayer")
+metadata/_custom_type_script = "uid://cnigx0jnsyk33"
+
 [node name="PlayerBody" type="Node2D" parent="."]
 unique_name_in_owner = true
 
@@ -184,10 +203,9 @@ player = NodePath("../..")
 
 [node name="Cat" type="AnimatedSprite2D" parent="PlayerBody"]
 texture_filter = 1
-sprite_frames = SubResource("SpriteFrames_a1qjk")
+sprite_frames = SubResource("SpriteFrames_yqrof")
 animation = &"walking"
 autoplay = "walking"
-frame_progress = 0.556179
 metadata/_aseprite_wizard_interface_config_ = {
 "pending_changes": {}
 }
@@ -203,7 +221,7 @@ metadata/_aseprite_wizard_config_ = {
 "source": "res://assets/images/entities/player/cat.ase",
 "source_uid": 7194391947236180513
 }
-metadata/_aseprite_wizard_source_file_hash_ = "db2d5d68651a745e3b6070d7873c8633"
+metadata/_aseprite_wizard_source_file_hash_ = "b9d6fb40ce0ac1cf668d5d8a07defdb9"
 
 [node name="Shadow" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.631373)
@@ -212,7 +230,7 @@ position = Vector2(0, 8)
 texture = ExtResource("6_bectd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 4.5)
+position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_bls4j")
 debug_color = Color(0, 0.595, 0.7, 0)
 
@@ -222,6 +240,7 @@ script = ExtResource("4_mpktj")
 [node name="HealthComponent" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("9_bectd")
+invincible_time = 2.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
@@ -232,7 +251,9 @@ speed_scale = 2.0
 
 [node name="Node2D" type="Node2D" parent="."]
 
+[connection signal="state_enter" from="StateMachine/Jumping" to="." method="_on_jumping_state_enter"]
 [connection signal="on_returning" from="PlayerBody/CaptureComponent/Rope" to="StateMachine/Capturing" method="_on_rope_on_returning"]
 [connection signal="on_waiting" from="PlayerBody/CaptureComponent/Rope" to="StateMachine/Capturing" method="_on_rope_on_waiting"]
+[connection signal="on_death" from="HealthComponent" to="." method="_on_health_component_on_death"]
 
 [editable path="PlayerBody/CaptureComponent"]

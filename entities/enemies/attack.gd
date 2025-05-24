@@ -18,15 +18,16 @@ func _ready() -> void:
 	pass
 
 func enter() -> void:
-	var direction = (player.position - position).normalized()
-	var velocity = direction * speed_move
-	enemy.velocity = velocity
 	return
 
 func physics_process(delta) -> void:
+	if !has_attacked:
+		var direction = enemy.global_position.direction_to(player.global_position)
+		enemy.velocity = direction * speed_move
 	if !player:
 		return
 	if enemy.global_position.distance_to(player.global_position) < 8 and not has_attacked:
 		player.health_component.damage(1)
 		has_attacked = true
 		enemy.velocity = Vector2(-1, 0) * speed_move
+	enemy.move_and_slide()

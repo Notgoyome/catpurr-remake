@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5s54vce2udqg"]
+
+[ext_resource type="PackedScene" uid="uid://bqcxmchtofjdr" path="res://entities/enemies/waves/wave.tscn" id="1_41aln"]
+[ext_resource type="PackedScene" uid="uid://dwk06glyq4rg7" path="res://entities/enemies/rams/ram.tscn" id="2_dpiki"]
+
+[node name="RamWave" instance=ExtResource("1_41aln")]
+
+[node name="Enemy2" parent="." index="0" instance=ExtResource("2_dpiki")]
+
+[node name="Enemy3" parent="." index="1" instance=ExtResource("2_dpiki")]
+position = Vector2(0, 16)
+
+[node name="Enemy4" parent="." index="2" instance=ExtResource("2_dpiki")]
+position = Vector2(0, 32)
+
+[node name="Enemy5" parent="." index="3" instance=ExtResource("2_dpiki")]
+position = Vector2(0, 48)
+
+[node name="Enemy6" parent="." index="4" instance=ExtResource("2_dpiki")]
+position = Vector2(0, 64)
+
+[node name="Enemy7" parent="." index="5" instance=ExtResource("2_dpiki")]
+position = Vector2(0, 80)
+
+[node name="Enemy8" parent="." index="6" instance=ExtResource("2_dpiki")]
+position = Vector2(0, 96)
+
+[node name="Enemy9" parent="." index="7" instance=ExtResource("2_dpiki")]
+position = Vector2(0, 112)

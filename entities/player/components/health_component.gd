@@ -5,9 +5,12 @@ class_name HealthComponent
 @export var initial_hp = 3
 var hp = 0
 
-@export var invincible = false
+@export var permanent_invincible = false
+var invincible = false
+@export var enable_iframe = true
 @export var invincible_time = 1.0
 var invincible_timer : Timer = Timer.new()
+
 
 signal on_damage(amount : int)
 signal on_death()
@@ -21,10 +24,12 @@ func _ready():
 	invincible_timer.timeout.connect(disable_invincibility)
 
 func damage(damage : int):
-	if invincible:
+	if invincible or permanent_invincible:
 		return
 
 	hp -= damage
+	if enable_iframe:
+		set_invincibility()
 	emit_signal("on_damage", damage)
 	on_health_changed.emit(hp)
 	if hp <= 0:

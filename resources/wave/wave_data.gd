@@ -7,3 +7,4 @@ class_name WaveData
 
 @export var min_y : float = 64
 @export var max_y : float = 164
+@export var additional_delay : float = 0.0

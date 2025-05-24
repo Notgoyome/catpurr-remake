@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://dwycwrm00jsdv"]
+
+[ext_resource type="Texture2D" uid="uid://dcm21owxl8txw" path="res://assets/images/ui/catpurr_l_Layer 1.ase_layer_tex" id="1_0biac"]
+[ext_resource type="Script" uid="uid://deja2ariegc7w" path="res://ui/menu/letter_title_animation.gd" id="2_3lqwe"]
+
+[sub_resource type="Animation" id="Animation_jiymt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LetterTitle:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 8)]
+}
+
+[sub_resource type="Animation" id="Animation_lsdqh"]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LetterTitle:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(0.392292, 1.7, 1),
+"update": 0,
+"values": [Vector2(0, 8), Vector2(0, 5), Vector2(0, 8)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jiymt"]
+_data = {
+&"RESET": SubResource("Animation_jiymt"),
+&"default": SubResource("Animation_lsdqh")
+}
+
+[node name="LetterTitle" type="TextureRect"]
+offset_top = 8.0
+offset_right = 40.0
+offset_bottom = 48.0
+texture = ExtResource("1_0biac")
+script = ExtResource("2_3lqwe")
+
+[node name="LetterAnimation" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_jiymt")
+}

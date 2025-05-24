@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://dxn8wh2cl6gb1"
+path="res://.godot/imported/diamond_8x8.aseprite-03ab1ee71e9909e0036c17e398b6c0af.res"
+
+[deps]
+
+source_file="res://assets/images/particles/diamond_8x8.aseprite"
+dest_files=["res://.godot/imported/diamond_8x8.aseprite-03ab1ee71e9909e0036c17e398b6c0af.res"]
+
+[params]
+

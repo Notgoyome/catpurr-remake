@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://xdv8axwmo3q7"]
+
+[ext_resource type="PackedScene" uid="uid://c0kbxhwsmaqee" path="res://entities/bullets/bullet.tscn" id="1_r1mbb"]
+[ext_resource type="Script" uid="uid://btifbrj3wem2l" path="res://resources/bullets/bullet_data.gd" id="2_78yoo"]
+[ext_resource type="Script" uid="uid://6jg5inphgi3q" path="res://entities/bullets/components/straight_movement_component.gd" id="2_mjysg"]
+
+[sub_resource type="Resource" id="Resource_7t74d"]
+script = ExtResource("2_78yoo")
+speed = 120.0
+damage = 1
+lifetime = 5.0
+metadata/_custom_type_script = "uid://btifbrj3wem2l"
+
+[node name="Bullet" instance=ExtResource("1_r1mbb")]
+bullet_data = SubResource("Resource_7t74d")
+
+[node name="StraightMovementComponent" type="Node" parent="." index="2" node_paths=PackedStringArray("bullet")]
+script = ExtResource("2_mjysg")
+bullet = NodePath("..")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

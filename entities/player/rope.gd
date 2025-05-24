@@ -60,6 +60,7 @@ func _on_hitbox_body_entered(body:Node2D) -> void:
 
 
 func enter_waiting() -> void:
+	rope.hide()
 	pass
 
 func enter_returning(waiting: bool = false) -> void:
@@ -79,6 +80,7 @@ func enter_returning(waiting: bool = false) -> void:
 	pass
 
 func enter_throwing() -> void:
+	rope.show()
 	hitbox.collision_mask = init_hitbox_mask
 	stop_all_tweens()
 	loop_tween = get_tree().create_tween()

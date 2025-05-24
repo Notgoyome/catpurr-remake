@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://yqmusxuc1kiv"]
+
+[ext_resource type="PackedScene" uid="uid://v8k4iceekoue" path="res://entities/enemies/chicken.tscn" id="1_lfet4"]
+[ext_resource type="Texture2D" uid="uid://chbjhjvcbulre" path="res://assets/images/entities/enemies/chicken_diagonal/chicken_captured.png" id="3_odpjt"]
+[ext_resource type="Texture2D" uid="uid://d2xr70vhvdgqu" path="res://assets/images/entities/enemies/chicken_diagonal/chicken.png" id="3_xenot"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e5sh1"]
+atlas = ExtResource("3_odpjt")
+region = Rect2(0, 0, 21, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_odpjt"]
+atlas = ExtResource("3_xenot")
+region = Rect2(0, 0, 21, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_677u6"]
+atlas = ExtResource("3_xenot")
+region = Rect2(21, 0, 21, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w1p8d"]
+atlas = ExtResource("3_xenot")
+region = Rect2(42, 0, 21, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2m2po"]
+atlas = ExtResource("3_xenot")
+region = Rect2(63, 0, 21, 21)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e5sh1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e5sh1")
+}],
+"loop": true,
+"name": &"captured",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_odpjt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_677u6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w1p8d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2m2po")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Chicken" instance=ExtResource("1_lfet4")]
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+sprite_frames = SubResource("SpriteFrames_e5sh1")
+animation = &"captured"
+
+[node name="Intro" parent="StateMachine" index="0"]
+speed_intro = 40.0
+direction = Vector2(-1, 0.5)
+
+[connection signal="state_finished" from="StateMachine/Captured" to="ThrowComponent" method="disable"]

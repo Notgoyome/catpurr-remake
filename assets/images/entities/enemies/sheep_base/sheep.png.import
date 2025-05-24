@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bicllkcfd6r1l"
-path="res://.godot/imported/chicken_death.png-400e1fe7b74769acaa7f741cb926140f.ctex"
+uid="uid://coqek1nwm4r55"
+path="res://.godot/imported/sheep.png-e79c50e0e8e3850567d5a666ea2d0a1d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/entities/enemies/chicken_death.png"
-dest_files=["res://.godot/imported/chicken_death.png-400e1fe7b74769acaa7f741cb926140f.ctex"]
+source_file="res://assets/images/entities/enemies/sheep_base/sheep.png"
+dest_files=["res://.godot/imported/sheep.png-e79c50e0e8e3850567d5a666ea2d0a1d.ctex"]
 
 [params]
 

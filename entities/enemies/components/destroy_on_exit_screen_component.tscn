@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0jjn0c3bx5yt"]
+
+[ext_resource type="Script" uid="uid://77g8sf3eaxsi" path="res://entities/enemies/components/destroy_on_exit_screen_component.gd" id="1_2r8sp"]
+
+[node name="DestroyOnExitScreenComponent" type="Node2D"]
+script = ExtResource("1_2r8sp")

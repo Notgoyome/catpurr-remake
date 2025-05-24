@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddlhwe2g7emp5"]
+
+[ext_resource type="PackedScene" uid="uid://bqcxmchtofjdr" path="res://entities/enemies/waves/wave.tscn" id="1_d4r75"]
+[ext_resource type="PackedScene" uid="uid://v8k4iceekoue" path="res://entities/enemies/chicken.tscn" id="2_ab1bl"]
+
+[node name="ChickenWave" instance=ExtResource("1_d4r75")]
+
+[node name="Chicken3" parent="." index="0" instance=ExtResource("2_ab1bl")]
+random_direction = false
+
+[node name="Chicken4" parent="." index="1" instance=ExtResource("2_ab1bl")]
+position = Vector2(24, 0)
+random_direction = false

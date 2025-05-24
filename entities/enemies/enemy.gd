@@ -8,8 +8,12 @@ class_name Enemy
 signal on_destroyed
 signal on_captured(rope: Rope)
 
+func _ready() -> void:
+	print(name, " ready")
+
 func _process(delta: float) -> void:
 	pass
+
 func set_captured(rope: Rope) -> void:
 	on_captured.emit(rope)
 	state_machine.on_state_transition(state_machine.current_state, "captured")

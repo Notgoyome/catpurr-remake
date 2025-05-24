@@ -1,14 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://c34ccq48c50f3"]
+[gd_scene load_steps=2 format=3 uid="uid://bqcxmchtofjdr"]
 
-[ext_resource type="PackedScene" uid="uid://v8k4iceekoue" path="res://entities/enemies/chicken.tscn" id="1_i0pjt"]
 [ext_resource type="Script" uid="uid://cp7oxprw8dv1g" path="res://entities/enemies/waves/wave.gd" id="1_x2kwk"]
 
 [node name="ChickenWave" type="Node2D"]
 script = ExtResource("1_x2kwk")
-
-[node name="Chicken" parent="." instance=ExtResource("1_i0pjt")]
-random_direction = false
-
-[node name="Chicken2" parent="." instance=ExtResource("1_i0pjt")]
-position = Vector2(24, 0)
-random_direction = false

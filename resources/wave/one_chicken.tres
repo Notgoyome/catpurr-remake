@@ -9,4 +9,5 @@ scene = ExtResource("1_vfpch")
 x_start = 336.0
 min_y = 64.0
 max_y = 164.0
+additional_delay = 0.0
 metadata/_custom_type_script = "uid://bbrfqxgyo6ilr"

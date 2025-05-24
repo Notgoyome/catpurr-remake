@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bgu8sgu6ccci6"
+path="res://.godot/imported/loop.aseprite-e525d6eb51155c03ff3b444e87467929.res"
+
+[deps]
+
+source_file="res://assets/images/entities/player/ropes/loop.aseprite"
+dest_files=["res://.godot/imported/loop.aseprite-e525d6eb51155c03ff3b444e87467929.res"]
+
+[params]
+

@@ -1,15 +1,17 @@
-[gd_scene load_steps=20 format=3 uid="uid://v8k4iceekoue"]
+[gd_scene load_steps=21 format=3 uid="uid://v8k4iceekoue"]
 
 [ext_resource type="PackedScene" uid="uid://4uymx28whucl" path="res://entities/enemies/enemy.tscn" id="1_2lc1s"]
-[ext_resource type="Script" uid="uid://bk4myjs2x4s20" path="res://entities/enemies/states/intro.gd" id="2_mc3h4"]
 [ext_resource type="Script" uid="uid://c2shrf0xhbv4e" path="res://entities/enemies/chicken.gd" id="2_q0h1e"]
-[ext_resource type="Texture2D" uid="uid://cishm85n45fv4" path="res://assets/images/entities/enemies/chicken_captured.png" id="3_xfttu"]
-[ext_resource type="Texture2D" uid="uid://641fgsith5t7" path="res://assets/images/entities/enemies/chicken.png" id="3_xjn0u"]
+[ext_resource type="Texture2D" uid="uid://cishm85n45fv4" path="res://assets/images/entities/enemies/chicken_base/chicken_captured.png" id="3_xfttu"]
+[ext_resource type="Texture2D" uid="uid://641fgsith5t7" path="res://assets/images/entities/enemies/chicken_base/chicken.png" id="3_xjn0u"]
 [ext_resource type="PackedScene" uid="uid://2m6evwq0ads8" path="res://entities/enemies/components/stress_particle.tscn" id="6_1tke6"]
 [ext_resource type="Texture2D" uid="uid://cg2un3n88cb7t" path="res://assets/images/particles/round_4x4.png" id="7_trwhp"]
 [ext_resource type="Texture2D" uid="uid://ilnrn63xj5yg" path="res://assets/images/entities/player/shadow.png" id="8_f53v0"]
-[ext_resource type="Script" uid="uid://qqire1ycsqan" path="res://entities/enemies/components/throw_component.gd" id="9_24lqo"]
+[ext_resource type="PackedScene" uid="uid://b24wfeqf40ctx" path="res://entities/enemies/states/intro.tscn" id="8_m4tkv"]
 [ext_resource type="Script" uid="uid://bwnxa8cresdbt" path="res://entities/enemies/attack.gd" id="9_78l60"]
+[ext_resource type="PackedScene" uid="uid://bl3yqobfkgrud" path="res://entities/enemies/components/throw_component.tscn" id="10_78l60"]
+[ext_resource type="PackedScene" uid="uid://boxtb2mbr6xkr" path="res://entities/enemies/states/state.tscn" id="10_m4tkv"]
+[ext_resource type="Script" uid="uid://c2we2hxt7u0g7" path="res://entities/enemies/states/captured.gd" id="11_m4jax"]
 
 [sub_resource type="Curve" id="Curve_1tke6"]
 _limits = [-200.0, 200.0, 0.0, 1.0]
@@ -69,13 +71,26 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="PackedScene" id="PackedScene_24lqo"]
-
 [node name="Chicken" instance=ExtResource("1_2lc1s")]
+up_direction = Vector2(0, 1)
 script = ExtResource("2_q0h1e")
 random_direction = true
 
-[node name="CapturedParticule" type="CPUParticles2D" parent="." index="0"]
+[node name="StateMachine_Captured#StressParticle" parent="." index="0" instance=ExtResource("6_1tke6")]
+position = Vector2(0, 1)
+emitting = false
+amount = 2
+texture = ExtResource("7_trwhp")
+local_coords = true
+emission_shape = 1
+emission_sphere_radius = 5.0
+spread = 90.0
+scale_amount_min = 1.0
+scale_amount_max = 1.0
+color = Color(0.219608, 0.635294, 1, 1)
+color_ramp = null
+
+[node name="CapturedParticule" type="CPUParticles2D" parent="." index="1"]
 unique_name_in_owner = true
 emitting = false
 amount = 20
@@ -95,58 +110,43 @@ scale_amount_min = 2.0
 scale_amount_max = 6.0
 scale_amount_curve = SubResource("Curve_trwhp")
 
-[node name="AnimatedSprite2D" parent="." index="1"]
+[node name="AnimatedSprite2D" parent="." index="2"]
 unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_xfttu")
 autoplay = "default"
 frame = 0
 frame_progress = 0.0
 
-[node name="Shadow" type="Sprite2D" parent="." index="2"]
+[node name="Shadow" type="Sprite2D" parent="." index="3"]
 unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0.631373)
 z_index = -2
 position = Vector2(1, 10)
 texture = ExtResource("8_f53v0")
 
-[node name="CollisionShape2D" parent="." index="3"]
+[node name="CollisionShape2D" parent="." index="4"]
 visible = false
 
-[node name="StateMachine" parent="." index="4" node_paths=PackedStringArray("initial_state")]
+[node name="StateMachine" parent="." index="5" node_paths=PackedStringArray("initial_state")]
 initial_state = NodePath("Intro")
 
-[node name="Intro" type="Node2D" parent="StateMachine" index="0"]
+[node name="Intro" parent="StateMachine" index="0" instance=ExtResource("8_m4tkv")]
 unique_name_in_owner = true
-y_sort_enabled = true
 position = Vector2(0, 1)
-script = ExtResource("2_mc3h4")
-speed_intro = 60.0
-next_state_on_limit_reached = "attack"
-metadata/_custom_type_script = "uid://cnigx0jnsyk33"
 
-[node name="StressParticle" parent="StateMachine/Captured" index="0" instance=ExtResource("6_1tke6")]
-position = Vector2(0, 1)
-emitting = false
-amount = 2
-texture = ExtResource("7_trwhp")
-local_coords = true
-emission_shape = 1
-emission_sphere_radius = 5.0
-spread = 90.0
-scale_amount_min = 1.0
-scale_amount_max = 1.0
-color = Color(0.219608, 0.635294, 1, 1)
-color_ramp = null
-
-[node name="Attack" type="Node2D" parent="StateMachine" index="2"]
+[node name="Attack" type="Node2D" parent="StateMachine" index="1"]
 script = ExtResource("9_78l60")
 metadata/_custom_type_script = "uid://cnigx0jnsyk33"
 
-[node name="ThrowComponent" type="Node2D" parent="." index="6"]
-script = ExtResource("9_24lqo")
-entity_throw_scene = SubResource("PackedScene_24lqo")
-direction = Vector2(-1, 0)
+[node name="State" parent="StateMachine" index="2" node_paths=PackedStringArray("animation_player", "capture_audio") instance=ExtResource("10_m4tkv")]
+animation_player = NodePath("../../AnimationPlayer")
+capture_audio = NodePath("../../CapturedAudio")
 
-[connection signal="on_destroyed" from="." to="StateMachine/Captured/StressParticle" method="_on_chicken_on_destroyed"]
-[connection signal="state_enter" from="StateMachine/Captured" to="StateMachine/Captured/StressParticle" method="_on_captured_state_enter"]
-[connection signal="state_finished" from="StateMachine/Captured" to="StateMachine/Captured/StressParticle" method="_on_captured_state_finished"]
+[node name="Captured" type="Node2D" parent="StateMachine" index="3" node_paths=PackedStringArray("animation_player", "capture_audio")]
+script = ExtResource("11_m4jax")
+animation_player = NodePath("../../AnimationPlayer")
+capture_audio = NodePath("../../CapturedAudio")
+metadata/_custom_type_script = "uid://cnigx0jnsyk33"
+
+[node name="ThrowComponent" parent="." index="6" instance=ExtResource("10_78l60")]
+enabled = false
