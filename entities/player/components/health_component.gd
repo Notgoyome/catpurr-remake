@@ -22,6 +22,7 @@ func _ready():
 	invincible_timer.set_wait_time(invincible_time)
 	invincible_timer.one_shot = true
 	invincible_timer.timeout.connect(disable_invincibility)
+	add_child(invincible_timer)
 
 func damage(damage : int):
 	if invincible or permanent_invincible:
@@ -41,11 +42,12 @@ func heal(amount : int):
 	on_health_changed.emit(hp)
 
 
-func set_invincibility(time : float = invincible_time):
+func set_invincibility():
 	invincible = true
-	invincible_time = time
+	invincible_timer.set_wait_time(invincible_time)
 	invincible_timer.start()
 
 func disable_invincibility():
+	print("Invincibility disabled")
 	invincible = false
 	invincible_timer.stop()

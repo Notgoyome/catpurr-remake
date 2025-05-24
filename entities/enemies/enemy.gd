@@ -9,8 +9,7 @@ signal on_destroyed
 signal on_captured(rope: Rope)
 
 func _ready() -> void:
-	print(name, " ready")
-
+	pass
 func _process(delta: float) -> void:
 	pass
 
