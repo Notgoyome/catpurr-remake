@@ -17,6 +17,9 @@ signal on_death()
 signal on_heal(amount : int)
 signal on_health_changed
 
+signal on_invicibility_started()
+signal on_invicibility_ended
+
 func _ready():
 	hp = initial_hp
 	invincible_timer.set_wait_time(invincible_time)
@@ -44,10 +47,11 @@ func heal(amount : int):
 
 func set_invincibility():
 	invincible = true
+	on_invicibility_started.emit()
 	invincible_timer.set_wait_time(invincible_time)
 	invincible_timer.start()
 
 func disable_invincibility():
-	print("Invincibility disabled")
 	invincible = false
+	on_invicibility_ended.emit()
 	invincible_timer.stop()
