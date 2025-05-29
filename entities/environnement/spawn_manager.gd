@@ -1,4 +1,5 @@
 extends Node
+class_name Spawner
 
 @export var waves : Array[WaveData]
 @export var wave_probability : Array[float]
@@ -43,4 +44,5 @@ func get_delay_time() -> float:
 	
 	var sign = 1 if randf() > 0.5 else -1
 	var new_delay =  delay + (delay * delay_additional_random_percentage * sign)
+	new_delay = max(new_delay, 0.1)
 	return new_delay

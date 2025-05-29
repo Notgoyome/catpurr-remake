@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://uugafuhbny55"
+path="res://.godot/imported/green_lemon_stitch_line.aseprite-bbd46737401d4a7439b14d3bcd1b115b.res"
+
+[deps]
+
+source_file="res://assets/images/ui/patch_rect/stitch_line/green_lemon_stitch_line.aseprite"
+dest_files=["res://.godot/imported/green_lemon_stitch_line.aseprite-bbd46737401d4a7439b14d3bcd1b115b.res"]
+
+[params]
+

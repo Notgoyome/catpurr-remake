@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cpwau54raobl4"]
+[gd_scene load_steps=12 format=3 uid="uid://cpwau54raobl4"]
 
 [ext_resource type="Script" uid="uid://3s6hkk863ghb" path="res://ui/main_menu.gd" id="1_0dkrt"]
 [ext_resource type="PackedScene" uid="uid://boppjtnktgfvk" path="res://ui/components/ui_manager_component.tscn" id="1_t7e0r"]
@@ -6,6 +6,25 @@
 [ext_resource type="Texture2D" uid="uid://bvr24xd2vf8qx" path="res://assets/images/ui/catpurr.png" id="3_wk0pr"]
 [ext_resource type="PackedScene" uid="uid://do68no0xq8mge" path="res://ui/button.tscn" id="4_8uxxo"]
 [ext_resource type="PackedScene" uid="uid://bcj14t6umrjkj" path="res://ui/buttons/play_button.tscn" id="4_ei257"]
+[ext_resource type="Script" uid="uid://dr3215ojpl071" path="res://ui/button.gd" id="5_p8ri8"]
+[ext_resource type="Texture2D" uid="uid://e76bltm5bblo" path="res://assets/images/ui/patch_rect/stitch_line/leather_stitch_line.png" id="7_ubpvv"]
+[ext_resource type="Texture2D" uid="uid://bvxql0abub4r0" path="res://assets/images/ui/patch_rect/stitch_line/brown_stitch_line.png" id="8_arv2f"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_arv2f"]
+texture = ExtResource("7_ubpvv")
+texture_margin_left = 6.0
+texture_margin_top = 5.0
+texture_margin_right = 6.0
+texture_margin_bottom = 5.0
+region_rect = Rect2(0, 0, 10, 11)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5klac"]
+texture = ExtResource("8_arv2f")
+texture_margin_left = 6.0
+texture_margin_top = 5.0
+texture_margin_right = 6.0
+texture_margin_bottom = 5.0
+region_rect = Rect2(0, 0, 10, 11)
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -58,7 +77,8 @@ layout_mode = 0
 offset_right = 96.0
 offset_bottom = 24.0
 theme_override_constants/outline_size = 0
-text = "Play"
+text = " "
+script = ExtResource("5_p8ri8")
 
 [node name="Panel2" type="Panel" parent="BoxContainer/ButtonBox"]
 layout_mode = 2
@@ -69,6 +89,22 @@ theme = ExtResource("3_rmr83")
 layout_mode = 2
 offset_right = 96.0
 offset_bottom = 24.0
+theme_override_styles/focus = SubResource("StyleBoxTexture_arv2f")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_arv2f")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_arv2f")
+theme_override_styles/hover = SubResource("StyleBoxTexture_arv2f")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_arv2f")
+theme_override_styles/normal = SubResource("StyleBoxTexture_arv2f")
+override_text = "Settings"
+
+[node name="TextureRect" parent="BoxContainer/ButtonBox/Panel2/PlayButton/ColorRect" index="0"]
+modulate = Color(0.443137, 0.254902, 0.231373, 1)
+offset_left = -45.0
+offset_top = -36.5
+offset_right = 267.0
+offset_bottom = 143.5
+
+[node name="ButtonLabel" parent="BoxContainer/ButtonBox/Panel2/PlayButton" index="2"]
 text = "Settings"
 
 [node name="Panel3" type="Panel" parent="BoxContainer/ButtonBox"]
@@ -80,6 +116,22 @@ theme = ExtResource("3_rmr83")
 layout_mode = 2
 offset_right = 96.0
 offset_bottom = 24.0
+theme_override_styles/focus = SubResource("StyleBoxTexture_5klac")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_5klac")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_5klac")
+theme_override_styles/hover = SubResource("StyleBoxTexture_5klac")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_5klac")
+theme_override_styles/normal = SubResource("StyleBoxTexture_5klac")
+override_text = "Quit"
+
+[node name="TextureRect" parent="BoxContainer/ButtonBox/Panel3/PlayButton/ColorRect" index="0"]
+modulate = Color(0.258824, 0.223529, 0.203922, 1)
+offset_left = -45.0
+offset_top = -36.5
+offset_right = 267.0
+offset_bottom = 143.5
+
+[node name="ButtonLabel" parent="BoxContainer/ButtonBox/Panel3/PlayButton" index="2"]
 text = "Quit"
 
 [node name="Panel" type="Control" parent="."]
@@ -93,3 +145,8 @@ offset_top = 8.0
 offset_right = 48.0
 offset_bottom = 48.0
 texture = ExtResource("3_wk0pr")
+
+[connection signal="pressed" from="BoxContainer/ButtonBox/Panel/PlayButton" to="." method="_on_play_button_pressed"]
+
+[editable path="BoxContainer/ButtonBox/Panel2/PlayButton"]
+[editable path="BoxContainer/ButtonBox/Panel3/PlayButton"]

@@ -31,11 +31,14 @@ animations = [{
 size = Vector2(21, 10)
 
 [node name="Enemy" instance=ExtResource("1_wwe7v")]
+collision_layer = 0
+collision_mask = 0
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_i2ble")
 frame = 0
 frame_progress = 0.0
+offset = Vector2(0, -14)
 
 [node name="CollisionShape2D" parent="." index="1"]
 visible = false
@@ -43,6 +46,7 @@ position = Vector2(2, 7)
 shape = SubResource("RectangleShape2D_gh5ps")
 
 [node name="StateMachine" parent="." index="2" node_paths=PackedStringArray("initial_state")]
+position = Vector2(0, -9)
 initial_state = NodePath("Intro")
 
 [node name="Intro" parent="StateMachine" index="0" instance=ExtResource("3_e5xec")]
@@ -51,10 +55,11 @@ speed_intro = 50.0
 local_speed = true
 
 [node name="DamageHitboxComponent" parent="." index="5" instance=ExtResource("4_qctki")]
+position = Vector2(0, -8)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="DamageHitboxComponent" index="0"]
 unique_name_in_owner = true
-position = Vector2(1.5, 7)
+position = Vector2(1.5, 3)
 shape = SubResource("RectangleShape2D_gh5ps")
 
 [node name="DestroyOnExitScreenComponent" parent="." index="6" instance=ExtResource("5_i2ble")]
@@ -67,3 +72,4 @@ modulate = Color(1, 1, 1, 0.631373)
 z_index = -2
 position = Vector2(4, 13)
 texture = ExtResource("6_x7lt7")
+offset = Vector2(0, -14)

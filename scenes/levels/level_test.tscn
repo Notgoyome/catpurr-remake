@@ -1,0 +1,60 @@
+[gd_scene load_steps=15 format=3 uid="uid://b56lex8nxh6cm"]
+
+[ext_resource type="PackedScene" uid="uid://dsl0kv6s3m8q7" path="res://scenes/levels/level_base.tscn" id="1_8883n"]
+[ext_resource type="Script" uid="uid://dy3p1wn1a4seh" path="res://entities/environnement/spawn_manager.gd" id="2_es4qh"]
+[ext_resource type="Script" uid="uid://bbrfqxgyo6ilr" path="res://resources/wave/wave_data.gd" id="3_s0ovu"]
+[ext_resource type="PackedScene" uid="uid://v8k4iceekoue" path="res://entities/enemies/chicken.tscn" id="4_nxmka"]
+[ext_resource type="Resource" uid="uid://b3yr3o7hpw2ku" path="res://resources/wave/one_chicken.tres" id="5_6racp"]
+[ext_resource type="PackedScene" uid="uid://yqmusxuc1kiv" path="res://entities/enemies/chicken/chicken_diag.tscn" id="6_tdlkl"]
+[ext_resource type="Resource" uid="uid://ivdmys45urj4" path="res://resources/wave/ram_9x9.tres" id="7_bc127"]
+[ext_resource type="PackedScene" uid="uid://bbjgm8l6d01xh" path="res://entities/enemies/waves/ram_9x9.tscn" id="7_s0ovu"]
+[ext_resource type="Resource" uid="uid://beyj70ps3suyw" path="res://resources/wave/ram_3_column.tres" id="8_dl0q5"]
+[ext_resource type="PackedScene" uid="uid://dq2d6wkcjfvgw" path="res://entities/enemies/waves/ram_wave_column_4_streak.tscn" id="8_nxmka"]
+[ext_resource type="Resource" uid="uid://hhao7vu2vtbt" path="res://resources/wave/ram_1_column.tres" id="9_eanp0"]
+
+[sub_resource type="Resource" id="Resource_qogh7"]
+script = ExtResource("3_s0ovu")
+scene = ExtResource("4_nxmka")
+x_start = 336.0
+min_y = 64.0
+max_y = 164.0
+additional_delay = 0.0
+metadata/_custom_type_script = "uid://bbrfqxgyo6ilr"
+
+[sub_resource type="Resource" id="Resource_5mi6g"]
+script = ExtResource("3_s0ovu")
+scene = ExtResource("6_tdlkl")
+x_start = 336.0
+min_y = 64.0
+max_y = 164.0
+additional_delay = 0.0
+metadata/_custom_type_script = "uid://bbrfqxgyo6ilr"
+
+[sub_resource type="Curve" id="Curve_ouxo3"]
+_limits = [0.0, 5.0, 0.0, 600.0]
+bake_resolution = 600
+_data = [Vector2(0, 2.09645), 0.0, 0.0, 0, 0, Vector2(600, 1.21205), -0.001474, 0.0, 1, 0]
+point_count = 2
+
+[node name="Level" instance=ExtResource("1_8883n")]
+
+[node name="Chicken" parent="." index="3" instance=ExtResource("4_nxmka")]
+position = Vector2(152, 64)
+
+[node name="ChickenSpawner" type="Node" parent="SpawnerManagerComponent" index="0"]
+script = ExtResource("2_es4qh")
+waves = Array[ExtResource("3_s0ovu")]([SubResource("Resource_qogh7"), ExtResource("5_6racp"), SubResource("Resource_5mi6g")])
+wave_probability = Array[float]([0.0])
+spawn_delay = SubResource("Curve_ouxo3")
+
+[node name="RamWave" parent="SpawnerManagerComponent/ChickenSpawner" index="0" instance=ExtResource("7_s0ovu")]
+position = Vector2(280, 128)
+
+[node name="RamWave2" parent="SpawnerManagerComponent/ChickenSpawner" index="1" instance=ExtResource("8_nxmka")]
+position = Vector2(232, 48)
+
+[node name="RamSpawner" type="Node" parent="SpawnerManagerComponent" index="1"]
+script = ExtResource("2_es4qh")
+waves = Array[ExtResource("3_s0ovu")]([ExtResource("7_bc127"), ExtResource("8_dl0q5"), ExtResource("9_eanp0")])
+wave_probability = Array[float]([0.0])
+spawn_delay = SubResource("Curve_ouxo3")

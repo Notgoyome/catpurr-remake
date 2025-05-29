@@ -7,3 +7,7 @@ extends Control
 func _ready() -> void:
 	ui_manager_component.set_ui(self, play_button)
 	pass
+
+func _on_play_button_pressed() -> void:
+	Game.init()
+	pass # Replace with function body.

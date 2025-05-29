@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://cxc6vpsrngtfm"]
+[gd_scene load_steps=25 format=4 uid="uid://cxc6vpsrngtfm"]
 
 [ext_resource type="Script" uid="uid://b4njrt2oi8f5k" path="res://entities/player/player.gd" id="1_l17oj"]
 [ext_resource type="Script" uid="uid://dw2h1a07qy7kn" path="res://resources/player/player_data.gd" id="2_mpktj"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://hisd70cg2dli" path="res://entities/player/states/capturing.gd" id="8_26q78"]
 [ext_resource type="Script" uid="uid://cge6484wh424g" path="res://entities/player/components/health_component.gd" id="9_bectd"]
 [ext_resource type="Script" uid="uid://c04d4rpljvpn8" path="res://entities/player/components/blink_component.gd" id="12_a1qjk"]
+[ext_resource type="PackedScene" uid="uid://bas7tas7wvgt8" path="res://entities/components/stop_time_component.tscn" id="13_j3ovn"]
 
 [sub_resource type="Resource" id="Resource_26q78"]
 script = ExtResource("2_mpktj")
@@ -241,11 +242,18 @@ script = ExtResource("4_mpktj")
 [node name="HealthComponent" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("9_bectd")
+max_hp = 1
+initial_hp = 1
 invincible_time = 2.0
 
 [node name="BlinkComponent" type="Node" parent="HealthComponent" node_paths=PackedStringArray("blink_node")]
 script = ExtResource("12_a1qjk")
 blink_node = NodePath("../../PlayerBody/Cat")
+
+[node name="StopTimeComponent" parent="HealthComponent" instance=ExtResource("13_j3ovn")]
+wait_time = 0.1
+one_shot = true
+ignore_time_scale = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
@@ -259,6 +267,7 @@ speed_scale = 2.0
 [connection signal="state_enter" from="StateMachine/Jumping" to="." method="_on_jumping_state_enter"]
 [connection signal="on_returning" from="PlayerBody/CaptureComponent/Rope" to="StateMachine/Capturing" method="_on_rope_on_returning"]
 [connection signal="on_waiting" from="PlayerBody/CaptureComponent/Rope" to="StateMachine/Capturing" method="_on_rope_on_waiting"]
+[connection signal="on_damage" from="HealthComponent" to="HealthComponent/StopTimeComponent" method="start_stop_time"]
 [connection signal="on_death" from="HealthComponent" to="." method="_on_health_component_on_death"]
 [connection signal="on_invicibility_ended" from="HealthComponent" to="HealthComponent/BlinkComponent" method="stop_blink"]
 [connection signal="on_invicibility_started" from="HealthComponent" to="HealthComponent/BlinkComponent" method="start_blink"]

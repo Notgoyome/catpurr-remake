@@ -1,9 +1,25 @@
-[gd_scene load_steps=8 format=3 uid="uid://c6bqneaq6754e"]
+[gd_scene load_steps=22 format=3 uid="uid://c6bqneaq6754e"]
 
 [ext_resource type="Script" uid="uid://01vcv0o006n5" path="res://ui/game_over.gd" id="1_5eixk"]
-[ext_resource type="PackedScene" uid="uid://bcj14t6umrjkj" path="res://ui/buttons/play_button.tscn" id="2_j1fe5"]
 [ext_resource type="Theme" uid="uid://cldnd0m2hso1b" path="res://assets/theme.tres" id="2_xjda6"]
-[ext_resource type="Texture2D" uid="uid://drdurpmfebhax" path="res://assets/images/tilemaps/tilemap_packed.png" id="3_xjda6"]
+[ext_resource type="Texture2D" uid="uid://cl00vw7e6ye7y" path="res://assets/images/ui/game/game_over/game_over_panel.png" id="3_k8651"]
+[ext_resource type="Theme" uid="uid://nmewhyu0usuh" path="res://ui/buttons/grey_button.tres" id="6_k8651"]
+[ext_resource type="PackedScene" uid="uid://cpbu1hjbvudjc" path="res://ui/game_over/text_value_ui.tscn" id="7_55k1u"]
+[ext_resource type="Texture2D" uid="uid://8f3hqubrkixq" path="res://assets/images/ui/patch_rect/stitch_line/blue_stitch_line.png" id="8_tb368"]
+[ext_resource type="Texture2D" uid="uid://efoj7srqyfpj" path="res://assets/images/ui/patch_rect/stitch_line/green_lemon_stitch_line.png" id="9_lgxpc"]
+[ext_resource type="Texture2D" uid="uid://b0gnanyr6ot3b" path="res://assets/images/ui/patch_rect/stitch_line/cat_orange_stitch_line.png" id="10_rcx4q"]
+[ext_resource type="Texture2D" uid="uid://dsr444e8d5iyb" path="res://assets/images/ui/patch_rect/rect_white.png" id="11_l87h4"]
+[ext_resource type="Texture2D" uid="uid://pbovsig4niox" path="res://assets/images/entities/player/cat_icon.png" id="11_v1fhu"]
+[ext_resource type="PackedScene" uid="uid://rk0ygud3bpnr" path="res://ui/up_button.tscn" id="11_xtpiw"]
+[ext_resource type="Texture2D" uid="uid://e76bltm5bblo" path="res://assets/images/ui/patch_rect/stitch_line/leather_stitch_line.png" id="12_cnsmc"]
+[ext_resource type="Script" uid="uid://8dqnh2v6se8v" path="res://ui/game_over/retry_button.gd" id="12_xtpiw"]
+[ext_resource type="PackedScene" uid="uid://do68no0xq8mge" path="res://ui/button.tscn" id="13_exxln"]
+[ext_resource type="Script" uid="uid://d1vhv3o4vnn6q" path="res://ui/game_over/main_menu_button.gd" id="14_xtpiw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_55k1u"]
+content_margin_top = 2.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lgxpc"]
 
 [sub_resource type="Animation" id="Animation_akjlf"]
 length = 0.001
@@ -17,7 +33,35 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 216)]
+"values": [Vector2(160, 300)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xtpiw"]
+resource_name = "darken"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.87451)]
 }
 
 [sub_resource type="Animation" id="Animation_xjda6"]
@@ -30,103 +74,271 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(0.307786, 0.353553),
+"transitions": PackedFloat32Array(0.378929, 1),
 "update": 0,
-"values": [Vector2(0, 216), Vector2(0, 0)]
+"values": [Vector2(160, 280), Vector2(160, 90)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_akjlf"]
 _data = {
 &"RESET": SubResource("Animation_akjlf"),
+&"darken": SubResource("Animation_xtpiw"),
 &"pop": SubResource("Animation_xjda6")
 }
 
 [node name="GameOver" type="CanvasLayer"]
 script = ExtResource("1_5eixk")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.0235294, 0.0235294, 0.0313726, 1)
+
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 216.0
-offset_bottom = 216.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 210.0
+offset_bottom = 210.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+[node name="NinePatch" type="NinePatchRect" parent="Control"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -68.0
+offset_right = 100.0
+offset_bottom = 68.0
 grow_horizontal = 2
 grow_vertical = 2
-alignment = 1
-
-[node name="MarginContainer3" type="MarginContainer" parent="Control/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.3
-
-[node name="MarginContainer" type="MarginContainer" parent="Control/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/margin_top = 32
-theme_override_constants/margin_bottom = 32
-
-[node name="Panel" type="NinePatchRect" parent="Control/HBoxContainer/MarginContainer"]
-layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("2_xjda6")
-texture = ExtResource("3_xjda6")
-region_rect = Rect2(50, 130, 44, 14)
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 7
+texture = ExtResource("3_k8651")
+region_rect = Rect2(0, 0, 200, 121)
+patch_margin_left = 76
+patch_margin_top = 23
+patch_margin_right = 76
+patch_margin_bottom = 30
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/HBoxContainer/MarginContainer/Panel"]
+[node name="PanelContainer" type="MarginContainer" parent="Control/NinePatch"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -97.5
+offset_top = -68.0
+offset_right = 97.5
+offset_bottom = 58.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 30
 
-[node name="Stats" type="VBoxContainer" parent="Control/HBoxContainer/MarginContainer/Panel/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/NinePatch/PanelContainer"]
 layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.8
+theme_override_constants/separation = 6
 
-[node name="MarginContainer2" type="MarginContainer" parent="Control/HBoxContainer/MarginContainer/Panel/VBoxContainer/Stats"]
-custom_minimum_size = Vector2(0, 8)
-layout_mode = 2
-size_flags_stretch_ratio = 0.1
-
-[node name="Label" type="Label" parent="Control/HBoxContainer/MarginContainer/Panel/VBoxContainer/Stats"]
-layout_mode = 2
-
-[node name="RetryButton" parent="Control/HBoxContainer/MarginContainer/Panel/VBoxContainer" instance=ExtResource("2_j1fe5")]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_stretch_ratio = 0.4
-text = "Retry"
-disable_animation = true
-
-[node name="MarginContainer2" type="MarginContainer" parent="Control/HBoxContainer/MarginContainer/Panel/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.1
-
-[node name="MarginContainer2" type="MarginContainer" parent="Control/HBoxContainer"]
+[node name="Left" type="PanelContainer" parent="Control/NinePatch/PanelContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_55k1u")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/NinePatch/PanelContainer/HBoxContainer/Left"]
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="Score" parent="Control/NinePatch/PanelContainer/HBoxContainer/Left/VBoxContainer" instance=ExtResource("7_55k1u")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Time" parent="Control/NinePatch/PanelContainer/HBoxContainer/Left/VBoxContainer" instance=ExtResource("7_55k1u")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="NinePatchRect" parent="Control/NinePatch/PanelContainer/HBoxContainer/Left/VBoxContainer/Time/HBoxContainer" index="0"]
+texture = ExtResource("8_tb368")
+
+[node name="Text" parent="Control/NinePatch/PanelContainer/HBoxContainer/Left/VBoxContainer/Time/HBoxContainer/NinePatchRect" index="0"]
+text = "Time"
+
+[node name="Value" parent="Control/NinePatch/PanelContainer/HBoxContainer/Left/VBoxContainer/Time/HBoxContainer/NinePatchRect2" index="0"]
+text = "1m32s"
+
+[node name="Seed" parent="Control/NinePatch/PanelContainer/HBoxContainer/Left/VBoxContainer" instance=ExtResource("7_55k1u")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="NinePatchRect" parent="Control/NinePatch/PanelContainer/HBoxContainer/Left/VBoxContainer/Seed/HBoxContainer" index="0"]
+texture = ExtResource("9_lgxpc")
+
+[node name="Text" parent="Control/NinePatch/PanelContainer/HBoxContainer/Left/VBoxContainer/Seed/HBoxContainer/NinePatchRect" index="0"]
+text = "Seed"
+
+[node name="Value" parent="Control/NinePatch/PanelContainer/HBoxContainer/Left/VBoxContainer/Seed/HBoxContainer/NinePatchRect2" index="0"]
+text = "Seed"
+
+[node name="Right" type="PanelContainer" parent="Control/NinePatch/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_lgxpc")
+
+[node name="VerticalBox" type="VBoxContainer" parent="Control/NinePatch/PanelContainer/HBoxContainer/Right"]
+layout_mode = 2
+
+[node name="Up" type="HBoxContainer" parent="Control/NinePatch/PanelContainer/HBoxContainer/Right/VerticalBox"]
+custom_minimum_size = Vector2(0, 37)
+layout_mode = 2
+
+[node name="CatPlayedContainer" type="NinePatchRect" parent="Control/NinePatch/PanelContainer/HBoxContainer/Right/VerticalBox/Up"]
+custom_minimum_size = Vector2(52, 0)
+layout_mode = 2
+texture = ExtResource("10_rcx4q")
+patch_margin_left = 3
+patch_margin_top = 5
+patch_margin_right = 4
+patch_margin_bottom = 5
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="CatTexture" type="TextureRect" parent="Control/NinePatch/PanelContainer/HBoxContainer/Right/VerticalBox/Up/CatPlayedContainer"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_v1fhu")
+stretch_mode = 3
+
+[node name="ModeContainer" type="NinePatchRect" parent="Control/NinePatch/PanelContainer/HBoxContainer/Right/VerticalBox/Up"]
+custom_minimum_size = Vector2(24, 0)
+layout_mode = 2
+texture = ExtResource("11_l87h4")
+patch_margin_left = 2
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="Down" type="HBoxContainer" parent="Control/NinePatch/PanelContainer/HBoxContainer/Right/VerticalBox"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+
+[node name="ItemContainer" type="NinePatchRect" parent="Control/NinePatch/PanelContainer/HBoxContainer/Right/VerticalBox/Down"]
+custom_minimum_size = Vector2(24, 25)
+layout_mode = 2
+texture = ExtResource("12_cnsmc")
+region_rect = Rect2(0, 0, 10, 11)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 3
+patch_margin_bottom = 4
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="ItemContainer2" type="NinePatchRect" parent="Control/NinePatch/PanelContainer/HBoxContainer/Right/VerticalBox/Down"]
+custom_minimum_size = Vector2(24, 25)
+layout_mode = 2
+texture = ExtResource("12_cnsmc")
+region_rect = Rect2(0, 0, 10, 11)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 3
+patch_margin_bottom = 4
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="ItemContainer3" type="NinePatchRect" parent="Control/NinePatch/PanelContainer/HBoxContainer/Right/VerticalBox/Down"]
+custom_minimum_size = Vector2(24, 25)
+layout_mode = 2
+texture = ExtResource("12_cnsmc")
+region_rect = Rect2(0, 0, 10, 11)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 3
+patch_margin_bottom = 4
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="Down" type="HBoxContainer" parent="Control/NinePatch"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -33.0
+offset_top = -21.0
+offset_right = 33.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="Panel" type="Panel" parent="Control/NinePatch/Down"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+
+[node name="RetryButton" parent="Control/NinePatch/Down/Panel" instance=ExtResource("11_xtpiw")]
+unique_name_in_owner = true
+layout_mode = 1
+offset_right = 2.0
+script = ExtResource("12_xtpiw")
+
+[node name="PlayButton" parent="Control/NinePatch/Down/Panel" instance=ExtResource("13_exxln")]
+layout_mode = 0
+offset_right = 32.0
+
+[node name="Panel2" type="Panel" parent="Control/NinePatch/Down"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+
+[node name="MainMenuButton" parent="Control/NinePatch/Down/Panel2" instance=ExtResource("11_xtpiw")]
+layout_mode = 1
+offset_right = 0.0
+theme = ExtResource("6_k8651")
+text = "Menu"
+script = ExtResource("14_xtpiw")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_akjlf")
 }
+
+[connection signal="pressed" from="Control/NinePatch/Down/Panel/RetryButton" to="Control/NinePatch/Down/Panel/RetryButton" method="_on_pressed"]
+[connection signal="pressed" from="Control/NinePatch/Down/Panel2/MainMenuButton" to="Control/NinePatch/Down/Panel2/MainMenuButton" method="_on_pressed"]
+
+[editable path="Control/NinePatch/PanelContainer/HBoxContainer/Left/VBoxContainer/Time"]
+[editable path="Control/NinePatch/PanelContainer/HBoxContainer/Left/VBoxContainer/Seed"]

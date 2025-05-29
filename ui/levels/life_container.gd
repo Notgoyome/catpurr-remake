@@ -7,16 +7,14 @@ var life_ui : TextureRect = null
 var player : Player = null
 
 func _ready() -> void:
-	if Game.player:
-		player = Game.player
-	else:
+	if !Game.player:
 		print("Player not found, awaiting")
 		await Game.player_init
+	player = Game.player
 	if !player:
 		print("Player not found, exiting")
 		return
 	player.health_component.on_health_changed.connect(set_hp)
-	print(player.health_component.hp)
 	set_hp(player.health_component.hp)
 	pass
 

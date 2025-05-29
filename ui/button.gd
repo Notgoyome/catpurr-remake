@@ -1,4 +1,4 @@
-
+@tool
 extends Button
 class_name ButtonUI
 
@@ -6,10 +6,15 @@ class_name ButtonUI
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @export var disable_animation: bool = false
 @onready var button_label: Label = %ButtonLabel
+@export_multiline var override_text: String = "Play":
+    set(value):
+        %ButtonLabel.text = value
+        override_text = value
+        text = " " if value != "" else ""
+        pass
 
 func _ready() -> void:
-    button_label.text = text
-    text = ""
+    override_text = override_text
 
 func _on_focus_entered() -> void:
     if disable_animation:

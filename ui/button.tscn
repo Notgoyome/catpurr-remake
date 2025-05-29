@@ -100,26 +100,26 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect/TextureRect:position")
+tracks/0/path = NodePath("ColorRect/TextureRect:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, -28)]
+"values": [false]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("ColorRect/TextureRect:visible")
+tracks/1/path = NodePath("ColorRect/TextureRect:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Vector2(0, -28)]
 }
 
 [sub_resource type="Animation" id="Animation_p172q"]
@@ -129,26 +129,26 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect/TextureRect:position")
+tracks/0/path = NodePath("ColorRect/TextureRect:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(1, 0.965936),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, -28), Vector2(-8, -28)]
+"values": [true]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("ColorRect/TextureRect:visible")
+tracks/1/path = NodePath("ColorRect/TextureRect:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 0.965936),
+"update": 0,
+"values": [Vector2(0, -28), Vector2(-8, -28)]
 }
 
 [sub_resource type="Animation" id="Animation_gcioa"]
@@ -157,26 +157,26 @@ length = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect/TextureRect:position")
+tracks/0/path = NodePath("ColorRect/TextureRect:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(1.68179, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, -28), Vector2(-8, -28)]
+"values": [true]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("ColorRect/TextureRect:visible")
+tracks/1/path = NodePath("ColorRect/TextureRect:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1.68179, 1),
+"update": 0,
+"values": [Vector2(0, -28), Vector2(-8, -28)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uan0n"]
@@ -188,9 +188,10 @@ _data = {
 
 [node name="PlayButton" type="Button"]
 material = SubResource("ShaderMaterial_7krdg")
-offset_right = 60.0
-offset_bottom = 32.0
+offset_right = 52.0
+offset_bottom = 22.0
 theme = ExtResource("1_0dg7g")
+text = " "
 script = ExtResource("2_7krdg")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -206,9 +207,9 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 4.0
-offset_top = 4.0
-offset_right = -4.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -3.0
 offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -223,10 +224,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -34.0
-offset_top = -40.0
-offset_right = 278.0
-offset_bottom = 140.0
+offset_left = -23.0
+offset_top = -35.5
+offset_right = 289.0
+offset_bottom = 144.5
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_gcioa")
@@ -238,9 +239,14 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 4
+text = "Play"
 horizontal_alignment = 1
 vertical_alignment = 1
 

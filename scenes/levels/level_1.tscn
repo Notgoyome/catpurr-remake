@@ -1,0 +1,31 @@
+[gd_scene load_steps=10 format=3 uid="uid://xyas66wwmy02"]
+
+[ext_resource type="PackedScene" uid="uid://dsl0kv6s3m8q7" path="res://scenes/levels/level_base.tscn" id="1_ksju7"]
+[ext_resource type="Script" uid="uid://dy3p1wn1a4seh" path="res://entities/environnement/spawn_manager.gd" id="2_dga24"]
+[ext_resource type="Script" uid="uid://bbrfqxgyo6ilr" path="res://resources/wave/wave_data.gd" id="3_qxy0u"]
+[ext_resource type="Resource" uid="uid://b3yr3o7hpw2ku" path="res://resources/wave/one_chicken.tres" id="5_excbq"]
+[ext_resource type="Resource" uid="uid://bxpawelo2yayv" path="res://resources/wave/chicken_diag.tres" id="5_s8va5"]
+[ext_resource type="Resource" uid="uid://ivdmys45urj4" path="res://resources/wave/ram_9x9.tres" id="7_dnkej"]
+[ext_resource type="Resource" uid="uid://beyj70ps3suyw" path="res://resources/wave/ram_3_column.tres" id="8_mm8aj"]
+[ext_resource type="Resource" uid="uid://hhao7vu2vtbt" path="res://resources/wave/ram_1_column.tres" id="9_wtwp4"]
+
+[sub_resource type="Curve" id="Curve_ouxo3"]
+_limits = [0.0, 5.0, 0.0, 600.0]
+bake_resolution = 600
+_data = [Vector2(0, 2.09645), 0.0, 0.0, 0, 0, Vector2(600, 1.21205), -0.001474, 0.0, 1, 0]
+point_count = 2
+
+[node name="Level" instance=ExtResource("1_ksju7")]
+position = Vector2(0, 1)
+
+[node name="ChickenSpawner" type="Node" parent="SpawnerManagerComponent" index="0"]
+script = ExtResource("2_dga24")
+waves = Array[ExtResource("3_qxy0u")]([ExtResource("5_excbq"), ExtResource("5_s8va5")])
+wave_probability = Array[float]([0.0])
+spawn_delay = SubResource("Curve_ouxo3")
+
+[node name="RamSpawner" type="Node" parent="SpawnerManagerComponent" index="1"]
+script = ExtResource("2_dga24")
+waves = Array[ExtResource("3_qxy0u")]([ExtResource("7_dnkej"), ExtResource("8_mm8aj"), ExtResource("9_wtwp4")])
+wave_probability = Array[float]([0.0])
+spawn_delay = SubResource("Curve_ouxo3")

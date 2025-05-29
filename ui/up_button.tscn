@@ -1,0 +1,92 @@
+[gd_scene load_steps=8 format=3 uid="uid://rk0ygud3bpnr"]
+
+[ext_resource type="Theme" uid="uid://7jlfgdk07rcg" path="res://ui/buttons/button_theme.tres" id="1_0370q"]
+[ext_resource type="Script" uid="uid://dsovpmn2vqc6n" path="res://ui/up_button.gd" id="2_0370q"]
+
+[sub_resource type="Shader" id="Shader_7krdg"]
+code = "shader_type canvas_item;
+uniform vec4 color: source_color;
+uniform vec4 to_color: source_color;
+void vertex() {
+	// Called for every vertex the material is visible on.
+}
+
+void fragment() {
+	COLOR = texture(TEXTURE, UV);
+	if (COLOR == color) {
+		COLOR = to_color;
+	}
+
+	// Called for every pixel the material is visible on.
+}
+
+//void light() {
+//	// Called for every pixel for every light affecting the CanvasItem.
+//	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7krdg"]
+shader = SubResource("Shader_7krdg")
+shader_parameter/color = Color(0.976471, 0.639216, 0.105882, 1)
+shader_parameter/to_color = Color(0.976471, 0.639216, 0.105882, 1)
+
+[sub_resource type="Animation" id="Animation_exxln"]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xtpiw"]
+resource_name = "Up"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_exxln"]
+_data = {
+&"RESET": SubResource("Animation_exxln"),
+&"Up": SubResource("Animation_xtpiw")
+}
+
+[node name="UpButton" type="Button"]
+material = SubResource("ShaderMaterial_7krdg")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_0370q")
+theme_override_font_sizes/font_size = 16
+text = "Retry"
+script = ExtResource("2_0370q")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_exxln")
+}
+speed_scale = 40.0
+
+[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
+[connection signal="focus_exited" from="." to="." method="_on_focus_exited"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

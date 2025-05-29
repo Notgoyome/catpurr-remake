@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="WaveData" load_steps=3 format=3 uid="uid://bxpawelo2yayv"]
+
+[ext_resource type="PackedScene" uid="uid://yqmusxuc1kiv" path="res://entities/enemies/chicken/chicken_diag.tscn" id="1_l8ly4"]
+[ext_resource type="Script" uid="uid://bbrfqxgyo6ilr" path="res://resources/wave/wave_data.gd" id="2_bm7id"]
+
+[resource]
+script = ExtResource("2_bm7id")
+scene = ExtResource("1_l8ly4")
+x_start = 336.0
+min_y = 65.0
+max_y = 176.0
+additional_delay = 0.0
+metadata/_custom_type_script = "uid://bbrfqxgyo6ilr"

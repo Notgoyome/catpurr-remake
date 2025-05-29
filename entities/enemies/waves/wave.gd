@@ -2,7 +2,7 @@ extends Node2D
 
 class_name Wave
 
-var nodes : Array[PackedScene] = []
+var nodes : Array[Node2D] = []
 func _ready() -> void:
     for child in get_children():
         nodes.append(child)

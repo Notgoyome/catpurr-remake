@@ -1,81 +1,22 @@
-[gd_scene load_steps=26 format=4 uid="uid://dsl0kv6s3m8q7"]
+[gd_scene load_steps=12 format=4 uid="uid://dsl0kv6s3m8q7"]
 
-[ext_resource type="PackedScene" uid="uid://cxc6vpsrngtfm" path="res://entities/player/player.tscn" id="1_377w7"]
-[ext_resource type="PackedScene" uid="uid://cmpb86god1d1r" path="res://scenes/levels/ground.tscn" id="1_bovvr"]
-[ext_resource type="Script" uid="uid://cbggolfrv3n4h" path="res://scenes/levels/level.gd" id="1_xb4v1"]
-[ext_resource type="Script" uid="uid://bv6kfikshcv8l" path="res://scenes/levels/ground.gd" id="3_urvlt"]
-[ext_resource type="Script" uid="uid://dy3p1wn1a4seh" path="res://entities/environnement/spawn_manager.gd" id="5_urvlt"]
-[ext_resource type="PackedScene" uid="uid://v8k4iceekoue" path="res://entities/enemies/chicken.tscn" id="6_d4w6o"]
-[ext_resource type="Script" uid="uid://bbrfqxgyo6ilr" path="res://resources/wave/wave_data.gd" id="7_ouxo3"]
-[ext_resource type="Script" uid="uid://c6e5ns257p36t" path="res://ui/levels/level_ui.gd" id="8_ouxo3"]
-[ext_resource type="Script" uid="uid://r0pwtltebnsj" path="res://ui/levels/score.gd" id="9_icy5c"]
-[ext_resource type="Resource" uid="uid://b3yr3o7hpw2ku" path="res://resources/wave/one_chicken.tres" id="9_qogh7"]
-[ext_resource type="PackedScene" uid="uid://yqmusxuc1kiv" path="res://entities/enemies/chicken/chicken_diag.tscn" id="10_mq31s"]
-[ext_resource type="Texture2D" uid="uid://bmfcar2w2tfqo" path="res://assets/images/entities/environnement/cloud.png" id="10_rmjfq"]
-[ext_resource type="Script" uid="uid://xxomrj05lrcn" path="res://scenes/levels/life_container.gd" id="11_7pb6i"]
-[ext_resource type="PackedScene" uid="uid://c5s54vce2udqg" path="res://entities/enemies/waves/ram_wave_column.tscn" id="12_b8j7q"]
-[ext_resource type="PackedScene" uid="uid://bbjgm8l6d01xh" path="res://entities/enemies/waves/ram_9x9.tscn" id="13_qhnmj"]
-[ext_resource type="PackedScene" uid="uid://c6bqneaq6754e" path="res://ui/game_over.tscn" id="14_8iyoh"]
-[ext_resource type="PackedScene" uid="uid://dq2d6wkcjfvgw" path="res://entities/enemies/waves/ram_wave_column_4_streak.tscn" id="14_jyre1"]
-[ext_resource type="PackedScene" uid="uid://xdv8axwmo3q7" path="res://entities/bullets/egg.tscn" id="15_mq31s"]
+[ext_resource type="Script" uid="uid://cbggolfrv3n4h" path="res://scenes/levels/level.gd" id="1_p3ew5"]
+[ext_resource type="Texture2D" uid="uid://bmfcar2w2tfqo" path="res://assets/images/entities/environnement/cloud.png" id="2_x2afm"]
+[ext_resource type="PackedScene" uid="uid://cmpb86god1d1r" path="res://scenes/levels/environnement/ground.tscn" id="3_1vve2"]
+[ext_resource type="Script" uid="uid://bv6kfikshcv8l" path="res://scenes/levels/environnement/ground.gd" id="4_bbft6"]
+[ext_resource type="Script" uid="uid://c6e5ns257p36t" path="res://ui/levels/level_ui.gd" id="5_ioey5"]
+[ext_resource type="Script" uid="uid://r0pwtltebnsj" path="res://ui/levels/score.gd" id="6_4vntt"]
+[ext_resource type="Script" uid="uid://xxomrj05lrcn" path="res://ui/levels/life_container.gd" id="7_48lp4"]
+[ext_resource type="PackedScene" uid="uid://c6bqneaq6754e" path="res://ui/game_over.tscn" id="8_rb8uy"]
+[ext_resource type="PackedScene" uid="uid://bbca3e6xrvf7j" path="res://scenes/levels/components/spawner_manager_component.tscn" id="9_x2afm"]
+[ext_resource type="PackedScene" uid="uid://cxc6vpsrngtfm" path="res://entities/player/player.tscn" id="17_41y26"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_377w7"]
 size = Vector2(840, 16)
 
-[sub_resource type="Resource" id="Resource_jyre1"]
-script = ExtResource("7_ouxo3")
-scene = ExtResource("13_qhnmj")
-x_start = 336.0
-min_y = 48.0
-max_y = 128.0
-additional_delay = 0.0
-metadata/_custom_type_script = "uid://bbrfqxgyo6ilr"
-
-[sub_resource type="Resource" id="Resource_lp2ca"]
-script = ExtResource("7_ouxo3")
-scene = ExtResource("14_jyre1")
-x_start = 336.0
-min_y = 48.0
-max_y = 48.0
-additional_delay = 2.0
-metadata/_custom_type_script = "uid://bbrfqxgyo6ilr"
-
-[sub_resource type="Resource" id="Resource_qhnmj"]
-script = ExtResource("7_ouxo3")
-scene = ExtResource("12_b8j7q")
-x_start = 336.0
-min_y = 48.0
-max_y = 48.0
-additional_delay = 0.0
-metadata/_custom_type_script = "uid://bbrfqxgyo6ilr"
-
-[sub_resource type="Resource" id="Resource_qogh7"]
-script = ExtResource("7_ouxo3")
-scene = ExtResource("6_d4w6o")
-x_start = 336.0
-min_y = 64.0
-max_y = 164.0
-additional_delay = 0.0
-metadata/_custom_type_script = "uid://bbrfqxgyo6ilr"
-
-[sub_resource type="Resource" id="Resource_5mi6g"]
-script = ExtResource("7_ouxo3")
-scene = ExtResource("10_mq31s")
-x_start = 336.0
-min_y = 64.0
-max_y = 164.0
-additional_delay = 0.0
-metadata/_custom_type_script = "uid://bbrfqxgyo6ilr"
-
-[sub_resource type="Curve" id="Curve_ouxo3"]
-_limits = [0.0, 11.9228, 0.0, 600.0]
-bake_resolution = 600
-_data = [Vector2(0, 3.06387), 0.0, -0.00186014, 0, 1, Vector2(600, 1.94778), -0.00186014, 0.0, 1, 0]
-point_count = 2
-
 [node name="Level" type="Node2D" groups=["Level"]]
 y_sort_enabled = true
-script = ExtResource("1_xb4v1")
+script = ExtResource("1_p3ew5")
 SPEED = 150.0
 
 [node name="Barrier" type="StaticBody2D" parent="."]
@@ -90,17 +31,19 @@ shape = SubResource("RectangleShape2D_377w7")
 position = Vector2(228, 188)
 shape = SubResource("RectangleShape2D_377w7")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Environnement" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Environnement"]
 z_index = -60
 offset_right = 320.0
 offset_bottom = 48.0
 color = Color(0.141176, 0.623529, 0.870588, 1)
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+[node name="Clouds" type="CPUParticles2D" parent="Environnement"]
 z_index = 50
 position = Vector2(320, 16)
 amount = 16
-texture = ExtResource("10_rmjfq")
+texture = ExtResource("2_x2afm")
 lifetime = 120.0
 preprocess = 61.95
 randomness = 1.0
@@ -114,43 +57,34 @@ initial_velocity_min = 5.0
 initial_velocity_max = 10.0
 scale_amount_max = 2.0
 
-[node name="Ground" parent="." node_paths=PackedStringArray("level") instance=ExtResource("1_bovvr")]
+[node name="Ground" parent="Environnement" node_paths=PackedStringArray("level") instance=ExtResource("3_1vve2")]
 scale = Vector2(1.00506, 1)
 tile_map_data = PackedByteArray("AAATAAsAAAADAAEAAAATAAoAAAABAAAAAAATAAkAAAABAAAAAAATAAgAAAABAAAAAAATAAcAAAABAAAAAAATAAYAAAABAAAAAAATAAUAAAABAAAAAAASAAsAAAADAAEAAAASAAoAAAABAAAAAAASAAkAAAAAAAAAAAASAAgAAAABAAAAAAASAAcAAAACAAAAAAASAAYAAAABAAAAAAASAAUAAAAAAAAAAAARAAsAAAAAAAAAAAARAAoAAAACAAAAAAARAAkAAAACAAAAAAARAAgAAAABAAAAAAARAAcAAAADAAEAAAARAAYAAAABAAAAAAARAAUAAAAAAAAAAAAQAAsAAAAAAAAAAAAQAAoAAAABAAAAAAAQAAkAAAAAAAAAAAAQAAgAAAABAAAAAAAQAAcAAAABAAAAAAAQAAYAAAABAAAAAAAQAAUAAAABAAAAAAAPAAsAAAAAAAAAAAAPAAoAAAAAAAAAAAAPAAkAAAAAAAAAAAAPAAgAAAABAAAAAAAPAAcAAAADAAEAAAAPAAYAAAADAAEAAAAPAAUAAAABAAAAAAAOAAsAAAADAAAAAAAOAAoAAAAAAAAAAAAOAAkAAAAAAAAAAAAOAAgAAAACAAAAAAAOAAcAAAABAAAAAAAOAAYAAAAAAAAAAAAOAAUAAAABAAAAAAANAAsAAAABAAAAAAANAAoAAAABAAAAAAANAAkAAAABAAAAAAANAAgAAAAAAAAAAAANAAcAAAACAAAAAAANAAYAAAABAAAAAAANAAUAAAABAAAAAAAMAAsAAAABAAAAAAAMAAoAAAABAAAAAAAMAAkAAAACAAAAAAAMAAgAAAABAAAAAAAMAAcAAAABAAAAAAAMAAYAAAABAAAAAAAMAAUAAAADAAEAAAALAAsAAAADAAEAAAALAAoAAAABAAAAAAALAAkAAAAAAAAAAAALAAgAAAABAAAAAAALAAcAAAACAAAAAAALAAYAAAADAAEAAAALAAUAAAABAAAAAAAKAAsAAAAAAAAAAAAKAAoAAAAAAAAAAAAKAAkAAAABAAAAAAAKAAgAAAABAAAAAAAKAAcAAAACAAAAAAAKAAYAAAABAAAAAAAKAAUAAAADAAAAAAAJAAsAAAADAAAAAAAJAAoAAAABAAAAAAAJAAkAAAAAAAAAAAAJAAgAAAABAAAAAAAJAAcAAAAAAAAAAAAJAAYAAAABAAAAAAAJAAUAAAAAAAAAAAAIAAsAAAABAAAAAAAIAAoAAAABAAAAAAAIAAkAAAAAAAAAAAAIAAgAAAAAAAAAAAAIAAcAAAADAAEAAAAIAAYAAAAAAAAAAAAIAAUAAAABAAAAAAAHAAsAAAABAAAAAAAHAAoAAAAAAAAAAAAHAAkAAAADAAAAAAAHAAgAAAACAAAAAAAHAAcAAAAAAAAAAAAHAAYAAAABAAAAAAAHAAUAAAABAAAAAAAGAAsAAAAAAAAAAAAGAAoAAAABAAAAAAAGAAkAAAAAAAAAAAAGAAgAAAAAAAAAAAAGAAcAAAAAAAAAAAAGAAYAAAABAAAAAAAGAAUAAAABAAAAAAAFAAsAAAABAAAAAAAFAAoAAAABAAAAAAAFAAkAAAAAAAAAAAAFAAgAAAADAAAAAAAFAAcAAAAAAAAAAAAFAAYAAAAAAAAAAAAFAAUAAAABAAAAAAAEAAsAAAAAAAAAAAAEAAoAAAADAAEAAAAEAAkAAAADAAAAAAAEAAgAAAACAAAAAAAEAAcAAAADAAAAAAAEAAYAAAABAAAAAAAEAAUAAAAAAAAAAAADAAsAAAACAAAAAAADAAoAAAABAAAAAAADAAkAAAAAAAAAAAADAAgAAAAAAAAAAAADAAcAAAAAAAAAAAADAAYAAAADAAAAAAADAAUAAAAAAAAAAAACAAsAAAABAAAAAAACAAoAAAAAAAAAAAACAAkAAAADAAAAAAACAAgAAAAAAAAAAAACAAcAAAAAAAAAAAACAAYAAAADAAAAAAACAAUAAAAAAAAAAAABAAsAAAACAAAAAAABAAoAAAABAAAAAAABAAkAAAABAAAAAAABAAgAAAAAAAAAAAABAAcAAAAAAAAAAAABAAYAAAAAAAAAAAABAAUAAAABAAAAAAAAAAsAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAcAAAADAAEAAAAAAAYAAAAAAAAAAAAAAAUAAAAAAAAAAAATAAQAAAADAAAAAAATAAMAAAAAAAAAAAASAAQAAAAAAAAAAAASAAMAAAABAAAAAAARAAQAAAADAAEAAAARAAMAAAABAAAAAAAQAAQAAAABAAAAAAAQAAMAAAAAAAAAAAAPAAQAAAABAAAAAAAPAAMAAAADAAEAAAAOAAQAAAAAAAAAAAAOAAMAAAABAAAAAAANAAQAAAABAAAAAAANAAMAAAAAAAAAAAAMAAQAAAAAAAAAAAAMAAMAAAABAAAAAAALAAQAAAABAAAAAAALAAMAAAABAAAAAAAKAAQAAAABAAAAAAAKAAMAAAABAAAAAAAJAAQAAAAAAAAAAAAJAAMAAAABAAAAAAAIAAQAAAAAAAAAAAAIAAMAAAABAAAAAAAHAAQAAAABAAAAAAAHAAMAAAABAAAAAAAGAAQAAAAAAAAAAAAGAAMAAAAAAAAAAAAFAAQAAAABAAAAAAAFAAMAAAAAAAAAAAAEAAQAAAAAAAAAAAAEAAMAAAABAAAAAAADAAQAAAABAAAAAAADAAMAAAABAAAAAAACAAQAAAABAAAAAAACAAMAAAABAAAAAAABAAQAAAABAAAAAAABAAMAAAADAAAAAAAAAAQAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAIAAAADAAAAAAABAAIAAAACAAAAAAACAAIAAAADAAEAAAADAAIAAAABAAAAAAAEAAIAAAABAAAAAAAFAAIAAAABAAAAAAAGAAIAAAADAAEAAAAHAAIAAAABAAAAAAAIAAIAAAAAAAAAAAAJAAIAAAABAAAAAAAKAAIAAAAAAAAAAAALAAIAAAABAAAAAAAMAAIAAAAAAAAAAAANAAIAAAABAAAAAAAOAAIAAAABAAAAAAAPAAIAAAAAAAAAAAAQAAIAAAAAAAAAAAARAAIAAAADAAEAAAASAAIAAAABAAAAAAATAAIAAAABAAAAAAA=")
-script = ExtResource("3_urvlt")
-level = NodePath("..")
+script = ExtResource("4_bbft6")
+level = NodePath("../..")
 
-[node name="Ground2" parent="." node_paths=PackedStringArray("level") instance=ExtResource("1_bovvr")]
+[node name="Ground2" parent="Environnement" node_paths=PackedStringArray("level") instance=ExtResource("3_1vve2")]
 position = Vector2(320, 0)
 tile_map_data = PackedByteArray("AAATAAsAAAABAAAAAAATAAoAAAAAAAAAAAATAAkAAAACAAAAAAATAAgAAAAAAAAAAAATAAcAAAABAAAAAAATAAYAAAABAAAAAAATAAUAAAABAAAAAAASAAsAAAAAAAAAAAASAAoAAAABAAAAAAASAAkAAAAAAAAAAAASAAgAAAACAAAAAAASAAcAAAAAAAAAAAASAAYAAAAAAAAAAAASAAUAAAADAAAAAAARAAsAAAAAAAAAAAARAAoAAAABAAAAAAARAAkAAAAAAAAAAAARAAgAAAABAAAAAAARAAcAAAAAAAAAAAARAAYAAAAAAAAAAAARAAUAAAABAAAAAAAQAAsAAAABAAAAAAAQAAoAAAABAAAAAAAQAAkAAAAAAAAAAAAQAAgAAAABAAAAAAAQAAcAAAABAAAAAAAQAAYAAAAAAAAAAAAQAAUAAAAAAAAAAAAPAAsAAAADAAAAAAAPAAoAAAAAAAAAAAAPAAkAAAABAAAAAAAPAAgAAAAAAAAAAAAPAAcAAAABAAAAAAAPAAYAAAACAAAAAAAPAAUAAAABAAAAAAAOAAsAAAADAAAAAAAOAAoAAAACAAAAAAAOAAkAAAABAAAAAAAOAAgAAAACAAAAAAAOAAcAAAAAAAAAAAAOAAYAAAABAAAAAAAOAAUAAAABAAAAAAANAAsAAAACAAAAAAANAAoAAAAAAAAAAAANAAkAAAAAAAAAAAANAAgAAAAAAAAAAAANAAcAAAAAAAAAAAANAAYAAAABAAAAAAANAAUAAAAAAAAAAAAMAAsAAAAAAAAAAAAMAAoAAAABAAAAAAAMAAkAAAABAAAAAAAMAAgAAAAAAAAAAAAMAAcAAAABAAAAAAAMAAYAAAAAAAAAAAAMAAUAAAAAAAAAAAALAAsAAAAAAAAAAAALAAoAAAABAAAAAAALAAkAAAABAAAAAAALAAgAAAAAAAAAAAALAAcAAAAAAAAAAAALAAYAAAAAAAAAAAALAAUAAAAAAAAAAAAKAAsAAAAAAAAAAAAKAAoAAAADAAAAAAAKAAkAAAABAAAAAAAKAAgAAAAAAAAAAAAKAAcAAAAAAAAAAAAKAAYAAAAAAAAAAAAKAAUAAAAAAAAAAAAJAAsAAAAAAAAAAAAJAAoAAAAAAAAAAAAJAAkAAAACAAAAAAAJAAgAAAAAAAAAAAAJAAcAAAADAAAAAAAJAAYAAAAAAAAAAAAJAAUAAAADAAEAAAAIAAsAAAADAAAAAAAIAAoAAAABAAAAAAAIAAkAAAABAAAAAAAIAAgAAAABAAAAAAAIAAcAAAABAAAAAAAIAAYAAAAAAAAAAAAIAAUAAAABAAAAAAAHAAsAAAAAAAAAAAAHAAoAAAABAAAAAAAHAAkAAAAAAAAAAAAHAAgAAAABAAAAAAAHAAcAAAABAAAAAAAHAAYAAAAAAAAAAAAHAAUAAAADAAEAAAAGAAsAAAAAAAAAAAAGAAoAAAAAAAAAAAAGAAkAAAABAAAAAAAGAAgAAAAAAAAAAAAGAAcAAAABAAAAAAAGAAYAAAAAAAAAAAAGAAUAAAABAAAAAAAFAAsAAAAAAAAAAAAFAAoAAAAAAAAAAAAFAAkAAAABAAAAAAAFAAgAAAABAAAAAAAFAAcAAAADAAEAAAAFAAYAAAAAAAAAAAAFAAUAAAAAAAAAAAAEAAsAAAADAAEAAAAEAAoAAAAAAAAAAAAEAAkAAAAAAAAAAAAEAAgAAAABAAAAAAAEAAcAAAAAAAAAAAAEAAYAAAAAAAAAAAAEAAUAAAAAAAAAAAADAAsAAAABAAAAAAADAAoAAAABAAAAAAADAAkAAAABAAAAAAADAAgAAAAAAAAAAAADAAcAAAAAAAAAAAADAAYAAAAAAAAAAAADAAUAAAAAAAAAAAACAAsAAAADAAEAAAACAAoAAAABAAAAAAACAAkAAAADAAAAAAACAAgAAAACAAAAAAACAAcAAAAAAAAAAAACAAYAAAAAAAAAAAACAAUAAAABAAAAAAABAAsAAAABAAAAAAABAAoAAAABAAAAAAABAAkAAAABAAAAAAABAAgAAAACAAAAAAABAAcAAAAAAAAAAAABAAYAAAADAAEAAAABAAUAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAoAAAABAAAAAAAAAAkAAAABAAAAAAAAAAgAAAABAAAAAAAAAAcAAAADAAAAAAAAAAYAAAADAAEAAAAAAAUAAAAAAAAAAAATAAQAAAAAAAAAAAATAAMAAAADAAEAAAASAAQAAAAAAAAAAAASAAMAAAADAAEAAAARAAQAAAABAAAAAAARAAMAAAAAAAAAAAAQAAQAAAADAAEAAAAQAAMAAAADAAAAAAAPAAQAAAAAAAAAAAAPAAMAAAAAAAAAAAAOAAQAAAAAAAAAAAAOAAMAAAAAAAAAAAANAAQAAAACAAAAAAANAAMAAAABAAAAAAAMAAQAAAACAAAAAAAMAAMAAAAAAAAAAAALAAQAAAABAAAAAAALAAMAAAABAAAAAAAKAAQAAAAAAAAAAAAKAAMAAAABAAAAAAAJAAQAAAAAAAAAAAAJAAMAAAABAAAAAAAIAAQAAAABAAAAAAAIAAMAAAADAAEAAAAHAAQAAAABAAAAAAAHAAMAAAAAAAAAAAAGAAQAAAAAAAAAAAAGAAMAAAAAAAAAAAAFAAQAAAABAAAAAAAFAAMAAAAAAAAAAAAEAAQAAAAAAAAAAAAEAAMAAAADAAAAAAADAAQAAAAAAAAAAAADAAMAAAABAAAAAAACAAQAAAAAAAAAAAACAAMAAAADAAAAAAABAAQAAAAAAAAAAAABAAMAAAADAAAAAAAAAAQAAAABAAAAAAAAAAMAAAACAAAAAAAAAAIAAAABAAAAAAABAAIAAAAAAAAAAAACAAIAAAAAAAAAAAADAAIAAAABAAAAAAAEAAIAAAAAAAAAAAAFAAIAAAACAAAAAAAGAAIAAAADAAEAAAAHAAIAAAAAAAAAAAAIAAIAAAABAAAAAAAJAAIAAAABAAAAAAAKAAIAAAABAAAAAAALAAIAAAABAAAAAAAMAAIAAAAAAAAAAAANAAIAAAADAAAAAAAOAAIAAAAAAAAAAAAPAAIAAAABAAAAAAAQAAIAAAABAAAAAAARAAIAAAACAAAAAAASAAIAAAAAAAAAAAATAAIAAAAAAAAAAAA=")
-script = ExtResource("3_urvlt")
-level = NodePath("..")
+script = ExtResource("4_bbft6")
+level = NodePath("../..")
 
-[node name="Player" parent="." instance=ExtResource("1_377w7")]
-position = Vector2(72, 112)
-collision_layer = 2
-collision_mask = 4
+[node name="UI" type="Node" parent="."]
 
-[node name="SpawnManager" type="Node" parent="."]
-script = ExtResource("5_urvlt")
-waves = Array[ExtResource("7_ouxo3")]([SubResource("Resource_jyre1"), SubResource("Resource_lp2ca"), SubResource("Resource_qhnmj"), SubResource("Resource_qogh7"), ExtResource("9_qogh7"), SubResource("Resource_5mi6g")])
-wave_probability = Array[float]([0.0])
-spawn_delay = SubResource("Curve_ouxo3")
+[node name="LevelUI" type="CanvasLayer" parent="UI"]
+script = ExtResource("5_ioey5")
 
-[node name="LevelUI" type="CanvasLayer" parent="."]
-script = ExtResource("8_ouxo3")
-
-[node name="Score" type="RichTextLabel" parent="LevelUI"]
+[node name="Score" type="RichTextLabel" parent="UI/LevelUI"]
 offset_left = 4.0
 offset_top = 5.0
 offset_right = 172.0
 offset_bottom = 21.0
 theme_override_constants/outline_size = 4
 text = "SCORE: "
-script = ExtResource("9_icy5c")
+script = ExtResource("6_4vntt")
 score_string = "SCORE: "
 
-[node name="LifeContainer" type="HBoxContainer" parent="LevelUI"]
+[node name="LifeContainer" type="HBoxContainer" parent="UI/LevelUI"]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -161,14 +95,15 @@ offset_bottom = 29.0
 grow_horizontal = 0
 theme_override_constants/separation = 0
 alignment = 2
-script = ExtResource("11_7pb6i")
+script = ExtResource("7_48lp4")
 
-[node name="GameOver" parent="." instance=ExtResource("14_8iyoh")]
+[node name="GameOver" parent="UI" instance=ExtResource("8_rb8uy")]
 
-[node name="Bullet" parent="." instance=ExtResource("15_mq31s")]
-position = Vector2(160, 112)
+[node name="SpawnerManagerComponent" parent="." instance=ExtResource("9_x2afm")]
 
-[node name="Chicken" parent="." instance=ExtResource("6_d4w6o")]
-position = Vector2(144, 113)
+[node name="Player" parent="." instance=ExtResource("17_41y26")]
+position = Vector2(72, 112)
+collision_layer = 2
+collision_mask = 4
 
-[connection signal="on_player_dying_animation_finished" from="Player" to="GameOver" method="_on_player_on_player_dying_animation_finished"]
+[connection signal="on_player_dying_animation_finished" from="Player" to="UI/GameOver" method="_on_player_on_player_dying_animation_finished"]

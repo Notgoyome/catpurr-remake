@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://ch0fue8unpfv"
+path="res://.godot/imported/rect_base.aseprite-abd89af5acf3c54cf50c3eab5fe2e668.res"
+
+[deps]
+
+source_file="res://assets/images/ui/patch_rect/rect_base.aseprite"
+dest_files=["res://.godot/imported/rect_base.aseprite-abd89af5acf3c54cf50c3eab5fe2e668.res"]
+
+[params]
+

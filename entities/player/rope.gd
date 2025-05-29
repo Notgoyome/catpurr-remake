@@ -34,6 +34,8 @@ func _process(delta: float) -> void:
 
 
 func change_state(new_state: RopeState) -> void:
+	if new_state == rope_state:
+		return
 	rope_state = new_state
 
 	match new_state:

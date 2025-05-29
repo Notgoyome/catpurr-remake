@@ -12,7 +12,7 @@ var invincible = false
 var invincible_timer : Timer = Timer.new()
 
 
-signal on_damage(amount : int)
+signal on_damage
 signal on_death()
 signal on_heal(amount : int)
 signal on_health_changed
@@ -34,7 +34,8 @@ func damage(damage : int):
 	hp -= damage
 	if enable_iframe:
 		set_invincibility()
-	emit_signal("on_damage", damage)
+	
+	on_damage.emit()
 	on_health_changed.emit(hp)
 	if hp <= 0:
 		emit_signal("on_death")

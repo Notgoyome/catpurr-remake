@@ -1,0 +1,68 @@
+[gd_scene load_steps=5 format=3 uid="uid://cpbu1hjbvudjc"]
+
+[ext_resource type="Script" uid="uid://cred1ywnvtshc" path="res://ui/game_over/text_value_ui.gd" id="1_3uakm"]
+[ext_resource type="Texture2D" uid="uid://twq8by1lxagl" path="res://assets/images/ui/patch_rect/stitch_line/orange_stitch_line.png" id="1_c5g2g"]
+[ext_resource type="Texture2D" uid="uid://dsr444e8d5iyb" path="res://assets/images/ui/patch_rect/rect_white.png" id="2_45ao6"]
+
+[sub_resource type="FontVariation" id="FontVariation_tb368"]
+spacing_bottom = 4
+
+[node name="TextValueUI" type="BoxContainer"]
+script = ExtResource("1_3uakm")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NinePatchRect" type="NinePatchRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(43, 14)
+layout_mode = 2
+texture = ExtResource("1_c5g2g")
+region_rect = Rect2(0, 0, 10, 11)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 3
+patch_margin_bottom = 4
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="Text" type="Label" parent="HBoxContainer/NinePatchRect"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = SubResource("FontVariation_tb368")
+text = "Score"
+horizontal_alignment = 1
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(58, 12)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+texture = ExtResource("2_45ao6")
+region_rect = Rect2(0, 0, 4, 5)
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 3
+
+[node name="Value" type="Label" parent="HBoxContainer/NinePatchRect2"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_tb368")
+text = "200.000$"
+horizontal_alignment = 1

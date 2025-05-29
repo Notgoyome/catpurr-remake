@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://dy4gmdsvk3gsw"
+path="res://.godot/imported/game_over_split2.aseprite-e6c0dc3147f572ea1fe15721f2e02381.res"
+
+[deps]
+
+source_file="res://assets/images/ui/game/game_over_split2.aseprite"
+dest_files=["res://.godot/imported/game_over_split2.aseprite-e6c0dc3147f572ea1fe15721f2e02381.res"]
+
+[params]
+

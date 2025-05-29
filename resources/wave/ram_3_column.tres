@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="WaveData" load_steps=3 format=3 uid="uid://beyj70ps3suyw"]
+
+[ext_resource type="PackedScene" uid="uid://dq2d6wkcjfvgw" path="res://entities/enemies/waves/ram_wave_column_4_streak.tscn" id="1_cyobs"]
+[ext_resource type="Script" uid="uid://bbrfqxgyo6ilr" path="res://resources/wave/wave_data.gd" id="2_k7cig"]
+
+[resource]
+script = ExtResource("2_k7cig")
+scene = ExtResource("1_cyobs")
+x_start = 336.0
+min_y = 48.0
+max_y = 48.0
+additional_delay = 4.0
+metadata/_custom_type_script = "uid://bbrfqxgyo6ilr"
