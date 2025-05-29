@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://do68no0xq8mge"]
+[gd_scene load_steps=15 format=3 uid="uid://do68no0xq8mge"]
 
 [ext_resource type="Theme" uid="uid://cldnd0m2hso1b" path="res://assets/theme.tres" id="1_0dg7g"]
 [ext_resource type="Script" uid="uid://dr3215ojpl071" path="res://ui/button.gd" id="2_7krdg"]
@@ -60,7 +60,7 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_7krdg"]
-resource_name = "up"
+resource_name = "left"
 length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -87,10 +87,14 @@ tracks/1/keys = {
 "values": [Color(0.976471, 0.639216, 0.105882, 1), Color(1, 0.835294, 0.254902, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_b44ym"]
+resource_name = "up"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fxfmk"]
 _data = {
 &"RESET": SubResource("Animation_fxfmk"),
-&"up": SubResource("Animation_7krdg")
+&"left": SubResource("Animation_7krdg"),
+&"up": SubResource("Animation_b44ym")
 }
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p172q"]
@@ -193,6 +197,8 @@ offset_bottom = 22.0
 theme = ExtResource("1_0dg7g")
 text = " "
 script = ExtResource("2_7krdg")
+focus_animation = null
+hover_animation = null
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
@@ -225,9 +231,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -23.0
-offset_top = -35.5
+offset_top = -36.0
 offset_right = 289.0
-offset_bottom = 144.5
+offset_bottom = 144.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_gcioa")

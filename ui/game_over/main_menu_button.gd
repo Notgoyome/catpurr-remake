@@ -1,4 +1,4 @@
-extends UpButton
+extends ButtonUI
 class_name MainMenuButton
 
 var main_menu_scene: PackedScene = load("res://ui/main_menu.tscn")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://xyas66wwmy02"]
+[gd_scene load_steps=11 format=3 uid="uid://xyas66wwmy02"]
 
 [ext_resource type="PackedScene" uid="uid://dsl0kv6s3m8q7" path="res://scenes/levels/level_base.tscn" id="1_ksju7"]
 [ext_resource type="Script" uid="uid://dy3p1wn1a4seh" path="res://entities/environnement/spawn_manager.gd" id="2_dga24"]
@@ -9,6 +9,11 @@
 [ext_resource type="Resource" uid="uid://beyj70ps3suyw" path="res://resources/wave/ram_3_column.tres" id="8_mm8aj"]
 [ext_resource type="Resource" uid="uid://hhao7vu2vtbt" path="res://resources/wave/ram_1_column.tres" id="9_wtwp4"]
 
+[sub_resource type="Curve" id="Curve_s8va5"]
+_limits = [100.0, 700.0, 0.0, 300.0]
+_data = [Vector2(0, 154.848), 0.0, 0.0, 0, 0, Vector2(300, 700), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [sub_resource type="Curve" id="Curve_ouxo3"]
 _limits = [0.0, 5.0, 0.0, 600.0]
 bake_resolution = 600
@@ -17,6 +22,8 @@ point_count = 2
 
 [node name="Level" instance=ExtResource("1_ksju7")]
 position = Vector2(0, 1)
+speed_curve = SubResource("Curve_s8va5")
+speed = 90.0
 
 [node name="ChickenSpawner" type="Node" parent="SpawnerManagerComponent" index="0"]
 script = ExtResource("2_dga24")

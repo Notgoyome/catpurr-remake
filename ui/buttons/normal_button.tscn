@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://cx5ofikk8rtip"]
+
+[ext_resource type="PackedScene" uid="uid://do68no0xq8mge" path="res://ui/button.tscn" id="1_ngtnh"]
+[ext_resource type="Texture2D" uid="uid://dpl2bq5yius7i" path="res://assets/images/ui/patch_rect/rect_blue.png" id="2_h05uj"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v1fhu"]
+texture = ExtResource("2_h05uj")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 1.0
+texture_margin_bottom = 2.0
+
+[sub_resource type="FontVariation" id="FontVariation_h05uj"]
+spacing_top = -2
+
+[node name="PlayButton" instance=ExtResource("1_ngtnh")]
+offset_right = 33.0
+offset_bottom = 18.0
+theme_override_styles/focus = SubResource("StyleBoxTexture_v1fhu")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_v1fhu")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_v1fhu")
+theme_override_styles/hover = SubResource("StyleBoxTexture_v1fhu")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_v1fhu")
+theme_override_styles/normal = SubResource("StyleBoxTexture_v1fhu")
+text = ""
+focus_animation = ""
+hover_animation = ""
+
+[node name="ColorRect" parent="." index="1"]
+offset_left = 1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = -2.0
+
+[node name="TextureRect" parent="ColorRect" index="0"]
+modulate = Color(0.156863, 0.360784, 0.768627, 1)
+offset_left = -15.5
+offset_top = -35.5
+offset_right = 296.5
+offset_bottom = 144.5
+
+[node name="ButtonLabel" parent="." index="2"]
+theme_override_fonts/font = SubResource("FontVariation_h05uj")

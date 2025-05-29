@@ -24,3 +24,11 @@ func set_game_data() -> void:
 	score.set_value(Game.current_score)
 	time.set_value(Game.get_str_time())
 	seed.set_value(Game.seed_string)
+
+
+func _on_retry_button_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_menu_button_pressed() -> void:
+	pass # Replace with function body.

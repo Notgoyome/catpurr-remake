@@ -1,6 +1,6 @@
 extends ButtonUI
-class_name RetryButtonUI
+
 
 func _on_pressed() -> void:
-    Game.init()
+    get_tree().quit()
     pass # Replace with function body.

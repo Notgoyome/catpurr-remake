@@ -14,10 +14,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_377w7"]
 size = Vector2(840, 16)
 
-[node name="Level" type="Node2D" groups=["Level"]]
+[node name="Level2" type="Node2D" groups=["Level"]]
 y_sort_enabled = true
 script = ExtResource("1_p3ew5")
-SPEED = 150.0
+speed = 150.0
 
 [node name="Barrier" type="StaticBody2D" parent="."]
 collision_layer = 5

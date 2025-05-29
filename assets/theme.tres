@@ -3,36 +3,27 @@
 [ext_resource type="Texture2D" uid="uid://twq8by1lxagl" path="res://assets/images/ui/patch_rect/stitch_line/orange_stitch_line.png" id="2_wl1kw"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5x3i2"]
-content_margin_left = 0.0
-content_margin_top = 0.0
-content_margin_right = 0.0
 texture = ExtResource("2_wl1kw")
-texture_margin_left = 8.0
-texture_margin_top = 2.0
-texture_margin_right = 8.0
-texture_margin_bottom = 3.0
+texture_margin_left = 6.0
+texture_margin_top = 4.0
+texture_margin_right = 6.0
+texture_margin_bottom = 5.0
 region_rect = Rect2(0, 0, 10, 11)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wl1kw"]
-content_margin_left = 0.0
-content_margin_top = 0.0
-content_margin_right = 0.0
 texture = ExtResource("2_wl1kw")
-texture_margin_left = 8.0
-texture_margin_top = 2.0
-texture_margin_right = 8.0
-texture_margin_bottom = 3.0
+texture_margin_left = 6.0
+texture_margin_top = 4.0
+texture_margin_right = 6.0
+texture_margin_bottom = 5.0
 region_rect = Rect2(0, 0, 10, 11)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lu33j"]
-content_margin_left = 0.0
-content_margin_top = 0.0
-content_margin_right = 0.0
 texture = ExtResource("2_wl1kw")
-texture_margin_left = 8.0
-texture_margin_top = 2.0
-texture_margin_right = 8.0
-texture_margin_bottom = 3.0
+texture_margin_left = 6.0
+texture_margin_top = 4.0
+texture_margin_right = 6.0
+texture_margin_bottom = 5.0
 region_rect = Rect2(0, 0, 10, 11)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wycmq"]
@@ -44,14 +35,11 @@ texture_margin_bottom = 5.0
 region_rect = Rect2(0, 0, 10, 11)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x2pqw"]
-content_margin_left = 0.0
-content_margin_top = 0.0
-content_margin_right = 0.0
 texture = ExtResource("2_wl1kw")
-texture_margin_left = 8.0
-texture_margin_top = 2.0
-texture_margin_right = 8.0
-texture_margin_bottom = 3.0
+texture_margin_left = 6.0
+texture_margin_top = 4.0
+texture_margin_right = 6.0
+texture_margin_bottom = 5.0
 region_rect = Rect2(0, 0, 10, 11)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lu33j"]

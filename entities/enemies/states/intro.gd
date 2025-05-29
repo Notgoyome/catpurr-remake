@@ -32,7 +32,7 @@ func physics_process(delta: float) -> void:
 	if enemy.velocity == Vector2.ZERO:
 		enemy.velocity = speed_intro * direction
 		if local_speed:
-			enemy.velocity += Game.current_level.SPEED * Vector2(-1, 0)
+			enemy.velocity += Game.current_level.speed * Vector2(-1, 0)
 	var collision = enemy.move_and_collide(enemy.velocity * delta)
 
 	if collision and should_bounce:

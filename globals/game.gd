@@ -59,4 +59,4 @@ func get_str_time() -> String:
 	var total_time = get_total_time()
 	var minutes = int(total_time / 60)
 	var seconds = int(total_time) % 60
-	return str(minutes) + "m " + str(seconds) + "s"
+	return str(minutes) + "m" + str(seconds) + "s"

@@ -10,7 +10,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	global_position.x -= level.SPEED * delta
+	global_position.x -= level.speed * delta
 	if global_position.x <= -screen_x:
 		global_position.x += screen_x * 2
 	pass

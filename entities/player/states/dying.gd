@@ -13,6 +13,6 @@ func enter():
     player.on_player_dying_animation_finished.emit()
 
 func physics_process(delta: float) -> void:
-    player.velocity = Game.current_level.SPEED * Vector2(-1, 0)
+    player.velocity = Game.current_level.speed * Vector2(-1, 0)
     player.move_and_slide()
     pass

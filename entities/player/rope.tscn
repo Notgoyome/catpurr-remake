@@ -91,6 +91,7 @@ script = ExtResource("1_2ymuj")
 
 [node name="Rope" type="NinePatchRect" parent="."]
 unique_name_in_owner = true
+visible = false
 offset_left = -3.0
 offset_top = -3.0
 offset_right = 4.0

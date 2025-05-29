@@ -1,20 +1,17 @@
-[gd_scene load_steps=22 format=3 uid="uid://c6bqneaq6754e"]
+[gd_scene load_steps=19 format=3 uid="uid://c6bqneaq6754e"]
 
 [ext_resource type="Script" uid="uid://01vcv0o006n5" path="res://ui/game_over.gd" id="1_5eixk"]
 [ext_resource type="Theme" uid="uid://cldnd0m2hso1b" path="res://assets/theme.tres" id="2_xjda6"]
 [ext_resource type="Texture2D" uid="uid://cl00vw7e6ye7y" path="res://assets/images/ui/game/game_over/game_over_panel.png" id="3_k8651"]
-[ext_resource type="Theme" uid="uid://nmewhyu0usuh" path="res://ui/buttons/grey_button.tres" id="6_k8651"]
 [ext_resource type="PackedScene" uid="uid://cpbu1hjbvudjc" path="res://ui/game_over/text_value_ui.tscn" id="7_55k1u"]
 [ext_resource type="Texture2D" uid="uid://8f3hqubrkixq" path="res://assets/images/ui/patch_rect/stitch_line/blue_stitch_line.png" id="8_tb368"]
 [ext_resource type="Texture2D" uid="uid://efoj7srqyfpj" path="res://assets/images/ui/patch_rect/stitch_line/green_lemon_stitch_line.png" id="9_lgxpc"]
 [ext_resource type="Texture2D" uid="uid://b0gnanyr6ot3b" path="res://assets/images/ui/patch_rect/stitch_line/cat_orange_stitch_line.png" id="10_rcx4q"]
+[ext_resource type="PackedScene" uid="uid://bfu7q3wwlayc4" path="res://ui/game_over/retry_button.tscn" id="11_cnsmc"]
 [ext_resource type="Texture2D" uid="uid://dsr444e8d5iyb" path="res://assets/images/ui/patch_rect/rect_white.png" id="11_l87h4"]
 [ext_resource type="Texture2D" uid="uid://pbovsig4niox" path="res://assets/images/entities/player/cat_icon.png" id="11_v1fhu"]
-[ext_resource type="PackedScene" uid="uid://rk0ygud3bpnr" path="res://ui/up_button.tscn" id="11_xtpiw"]
 [ext_resource type="Texture2D" uid="uid://e76bltm5bblo" path="res://assets/images/ui/patch_rect/stitch_line/leather_stitch_line.png" id="12_cnsmc"]
-[ext_resource type="Script" uid="uid://8dqnh2v6se8v" path="res://ui/game_over/retry_button.gd" id="12_xtpiw"]
-[ext_resource type="PackedScene" uid="uid://do68no0xq8mge" path="res://ui/button.tscn" id="13_exxln"]
-[ext_resource type="Script" uid="uid://d1vhv3o4vnn6q" path="res://ui/game_over/main_menu_button.gd" id="14_xtpiw"]
+[ext_resource type="PackedScene" uid="uid://bs5wnce441h7q" path="res://ui/game_over/main_button.tscn" id="13_v1fhu"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_55k1u"]
 content_margin_top = 2.0
@@ -297,9 +294,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -33.0
+offset_left = -100.0
 offset_top = -21.0
-offset_right = 33.0
+offset_right = 100.0
 offset_bottom = -7.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -310,35 +307,30 @@ alignment = 1
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 
-[node name="RetryButton" parent="Control/NinePatch/Down/Panel" instance=ExtResource("11_xtpiw")]
+[node name="RetryButton" parent="Control/NinePatch/Down/Panel" instance=ExtResource("11_cnsmc")]
 unique_name_in_owner = true
-layout_mode = 1
-offset_right = 2.0
-script = ExtResource("12_xtpiw")
-
-[node name="PlayButton" parent="Control/NinePatch/Down/Panel" instance=ExtResource("13_exxln")]
 layout_mode = 0
-offset_right = 32.0
+offset_bottom = 14.0
 
 [node name="Panel2" type="Panel" parent="Control/NinePatch/Down"]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 
-[node name="MainMenuButton" parent="Control/NinePatch/Down/Panel2" instance=ExtResource("11_xtpiw")]
+[node name="PlayButton" parent="Control/NinePatch/Down/Panel2" instance=ExtResource("13_v1fhu")]
 layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 offset_right = 0.0
-theme = ExtResource("6_k8651")
-text = "Menu"
-script = ExtResource("14_xtpiw")
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_akjlf")
 }
-
-[connection signal="pressed" from="Control/NinePatch/Down/Panel/RetryButton" to="Control/NinePatch/Down/Panel/RetryButton" method="_on_pressed"]
-[connection signal="pressed" from="Control/NinePatch/Down/Panel2/MainMenuButton" to="Control/NinePatch/Down/Panel2/MainMenuButton" method="_on_pressed"]
 
 [editable path="Control/NinePatch/PanelContainer/HBoxContainer/Left/VBoxContainer/Time"]
 [editable path="Control/NinePatch/PanelContainer/HBoxContainer/Left/VBoxContainer/Seed"]
