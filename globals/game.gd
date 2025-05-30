@@ -32,7 +32,6 @@ func init(new_seed = "") -> void:
 
 	seed(new_seed.hash())
 	seed_string = new_seed
-	print("Game seed: ", seed_string)
 	TransitionManager.transition_to_scene(Game.start_scene)
 	current_score = 0
 	_current_time = Time.get_ticks_msec() / 1000.0

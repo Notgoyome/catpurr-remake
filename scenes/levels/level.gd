@@ -10,8 +10,9 @@ func _ready() -> void:
     start_time = Time.get_ticks_msec()
     speed = speed_curve.sample(0.0)
     #useful when lauching scene via curreent scene
-    Game.seed_string = "test"
-    seed(Game.seed_string.hash())
+    if Game.seed_string == "":
+        Game.seed_string = "test"
+        seed(Game.seed_string.hash())
 
 func _process(delta: float) -> void:
     if i < 60:
@@ -19,6 +20,4 @@ func _process(delta: float) -> void:
         return
     i = 0
     var current_time : int = Time.get_ticks_msec() - start_time
-    print(current_time / 1000.0)
     speed = speed_curve.sample(current_time / 1000.0)
-    print(speed)

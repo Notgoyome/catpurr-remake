@@ -21,11 +21,9 @@ func on_throw_timeout():
 	entity_throw.global_position = global_position
 
 func disable():
-	print("Throw disabled")
 	enabled = false
 	throw_timer.stop()
 
 func enable():
-	print("Throw enabled")
 	enabled = true
 	throw_timer.start()

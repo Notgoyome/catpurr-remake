@@ -240,11 +240,9 @@ custom_minimum_size = Vector2(24, 0)
 layout_mode = 2
 texture = ExtResource("11_l87h4")
 patch_margin_left = 2
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-axis_stretch_horizontal = 2
-axis_stretch_vertical = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 4
 
 [node name="Down" type="HBoxContainer" parent="Control/NinePatch/PanelContainer/HBoxContainer/Right/VerticalBox"]
 custom_minimum_size = Vector2(0, 25)
