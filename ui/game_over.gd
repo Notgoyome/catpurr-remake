@@ -1,5 +1,8 @@
 extends CanvasLayer
 class_name GameOver
+
+@export var ui_manager_component : UIManagerComponent
+
 @onready var retry_button: Button = %RetryButton
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 
@@ -12,13 +15,15 @@ func _ready() -> void:
 
 func _on_player_on_player_dying_animation_finished() -> void:
 	set_game_data()
-	show()
+	ui_manager_component.set_ui(self, null, 10, true)
+
 	animation_player.play("darken")
 	await animation_player.animation_finished
+
 	animation_player.play("pop")
 	await animation_player.animation_finished
+
 	retry_button.grab_focus()
-	pass # Replace with function body.
 
 func set_game_data() -> void:
 	score.set_value(Game.current_score)

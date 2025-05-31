@@ -5,7 +5,7 @@ extends Control
 @onready var ui_manager_component: UIManagerComponent = %UiManagerComponent
 
 func _ready() -> void:
-	ui_manager_component.set_ui(self, play_button)
+	ui_manager_component.open_ui(self, play_button)
 	pass
 
 func _on_play_button_pressed() -> void:

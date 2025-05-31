@@ -7,10 +7,10 @@ func _on_pressed() -> void:
 
 
 func _on_focus_entered() -> void:
-	%AnimationPlayer.play("up")
+	%AnimationPlayer.play("left")
 	pass # Replace with function body.
 
 
 func _on_focus_exited() -> void:
-	%AnimationPlayer.play_backwards("up")
+	%AnimationPlayer.play_backwards("left")
 	pass # Replace with function body.

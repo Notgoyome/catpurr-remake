@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=8 format=3 uid="uid://7jlfgdk07rcg"]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://7jlfgdk07rcg"]
 
 [ext_resource type="Texture2D" uid="uid://dpl2bq5yius7i" path="res://assets/images/ui/patch_rect/rect_blue.png" id="2_nlxl5"]
 
@@ -67,13 +67,7 @@ texture_margin_bottom = 3.0
 axis_stretch_horizontal = 1
 region_rect = Rect2(0, 0, 4, 5)
 
-[sub_resource type="FontVariation" id="FontVariation_k8651"]
-spacing_top = -10
-spacing_bottom = -10
-
 [resource]
-default_font = SubResource("FontVariation_k8651")
-default_font_size = 0
 Button/styles/disabled = SubResource("StyleBoxTexture_v35o3")
 Button/styles/focus = SubResource("StyleBoxTexture_jyha3")
 Button/styles/hover = SubResource("StyleBoxTexture_288n7")

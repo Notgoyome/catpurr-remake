@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://do68no0xq8mge"]
 
 [ext_resource type="Theme" uid="uid://cldnd0m2hso1b" path="res://assets/theme.tres" id="1_0dg7g"]
-[ext_resource type="Script" uid="uid://dr3215ojpl071" path="res://ui/button.gd" id="2_7krdg"]
+[ext_resource type="Script" uid="uid://dr3215ojpl071" path="res://ui/buttons/button.gd" id="2_7krdg"]
 [ext_resource type="Texture2D" uid="uid://dv22fr0gqt0yw" path="res://assets/images/particles/diagonal_row.png" id="4_gcioa"]
 
 [sub_resource type="Shader" id="Shader_7krdg"]
@@ -48,7 +48,7 @@ tracks/0/keys = {
 }
 tracks/1/type = "value"
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/path = NodePath(".:material:shader_parameter/to_color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
@@ -76,7 +76,7 @@ tracks/0/keys = {
 }
 tracks/1/type = "value"
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/path = NodePath(".:material:shader_parameter/to_color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
@@ -190,13 +190,15 @@ _data = {
 &"start": SubResource("Animation_gcioa")
 }
 
-[node name="PlayButton" type="Button"]
+[node name="ButtonUI" type="Button"]
 material = SubResource("ShaderMaterial_7krdg")
 offset_right = 52.0
 offset_bottom = 22.0
 theme = ExtResource("1_0dg7g")
 text = " "
 script = ExtResource("2_7krdg")
+focus_animation = "left"
+hover_animation = "left"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
@@ -229,9 +231,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -23.0
-offset_top = -36.0
+offset_top = -35.5
 offset_right = 289.0
-offset_bottom = 144.0
+offset_bottom = 144.5
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_gcioa")

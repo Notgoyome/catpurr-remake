@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var min_limit_x: float = -100.0
-@export var max_limit_x: float = 500.0
+@export var max_limit_x: float = 4000.0
 
 var parent: Node2D
 func _ready() -> void:

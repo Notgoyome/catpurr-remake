@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://dsl0kv6s3m8q7"]
+[gd_scene load_steps=14 format=4 uid="uid://dsl0kv6s3m8q7"]
 
 [ext_resource type="Script" uid="uid://cbggolfrv3n4h" path="res://scenes/levels/level.gd" id="1_p3ew5"]
 [ext_resource type="Texture2D" uid="uid://bmfcar2w2tfqo" path="res://assets/images/entities/environnement/cloud.png" id="2_x2afm"]
@@ -9,7 +9,8 @@
 [ext_resource type="Script" uid="uid://xxomrj05lrcn" path="res://ui/levels/life_container.gd" id="7_48lp4"]
 [ext_resource type="PackedScene" uid="uid://c6bqneaq6754e" path="res://ui/game_over.tscn" id="8_rb8uy"]
 [ext_resource type="PackedScene" uid="uid://q5g4pwan1mka" path="res://ui/game/pause_menu.tscn" id="9_dq8h5"]
-[ext_resource type="PackedScene" uid="uid://bbca3e6xrvf7j" path="res://scenes/levels/components/spawner_manager_component.tscn" id="9_x2afm"]
+[ext_resource type="PackedScene" uid="uid://bbca3e6xrvf7j" path="res://scenes/levels/components/spawners/spawner_manager_component.tscn" id="9_x2afm"]
+[ext_resource type="PackedScene" uid="uid://boppjtnktgfvk" path="res://ui/components/ui_manager_component.tscn" id="10_imdmy"]
 [ext_resource type="PackedScene" uid="uid://cxc6vpsrngtfm" path="res://entities/player/player.tscn" id="17_41y26"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_377w7"]
@@ -98,9 +99,14 @@ theme_override_constants/separation = 0
 alignment = 2
 script = ExtResource("7_48lp4")
 
-[node name="GameOver" parent="UI" instance=ExtResource("8_rb8uy")]
+[node name="GameOver" parent="UI" node_paths=PackedStringArray("ui_manager_component") instance=ExtResource("8_rb8uy")]
+ui_manager_component = NodePath("../UiManagerComponent")
 
-[node name="PauseMenu" parent="UI" instance=ExtResource("9_dq8h5")]
+[node name="PauseMenu" parent="UI" node_paths=PackedStringArray("UiManagerComponent") instance=ExtResource("9_dq8h5")]
+visible = false
+UiManagerComponent = NodePath("../UiManagerComponent")
+
+[node name="UiManagerComponent" parent="UI" instance=ExtResource("10_imdmy")]
 
 [node name="SpawnerManagerComponent" parent="." instance=ExtResource("9_x2afm")]
 

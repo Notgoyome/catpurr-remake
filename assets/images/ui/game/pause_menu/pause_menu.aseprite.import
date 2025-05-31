@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://8xkbkgixt5l3"
+path="res://.godot/imported/pause_menu.aseprite-12129e657edfa5db8660d0e42b3f833f.res"
+
+[deps]
+
+source_file="res://assets/images/ui/game/pause_menu/pause_menu.aseprite"
+dest_files=["res://.godot/imported/pause_menu.aseprite-12129e657edfa5db8660d0e42b3f833f.res"]
+
+[params]
+

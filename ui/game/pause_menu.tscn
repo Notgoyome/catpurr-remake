@@ -1,3 +1,486 @@
-[gd_scene format=3 uid="uid://q5g4pwan1mka"]
+[gd_scene load_steps=23 format=3 uid="uid://q5g4pwan1mka"]
+
+[ext_resource type="Script" uid="uid://d33yhexfr406q" path="res://ui/game/pause_menu.gd" id="1_fyn71"]
+[ext_resource type="Shader" uid="uid://dwd7q7sa4wm3s" path="res://ui/game/pause_menu.gdshader" id="2_n7ba2"]
+[ext_resource type="Texture2D" uid="uid://cu3hwlv8ivbog" path="res://assets/images/particles/round_8x8.png" id="3_suntr"]
+[ext_resource type="PackedScene" uid="uid://50bn7uky7lpb" path="res://ui/pause/pause_menu_button.tscn" id="3_vv75u"]
+[ext_resource type="Texture2D" uid="uid://bh036w3ngw67j" path="res://assets/images/ui/game/pause_menu/player_summary/black_panel.png" id="4_twkrh"]
+[ext_resource type="Texture2D" uid="uid://iytucrxh4cmo" path="res://assets/images/ui/patch_rect/rect_black.png" id="5_51rk4"]
+[ext_resource type="Texture2D" uid="uid://e76bltm5bblo" path="res://assets/images/ui/patch_rect/stitch_line/leather_stitch_line.png" id="5_ewatp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vv75u"]
+shader = ExtResource("2_n7ba2")
+shader_parameter/blur_force = 0.0
+
+[sub_resource type="Curve" id="Curve_suntr"]
+_data = [Vector2(0, 0), 0.0, 6.43836, 0, 0, Vector2(0.772973, 0.914213), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.66428, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n7ba2"]
+
+[sub_resource type="Shader" id="Shader_7krdg"]
+code = "shader_type canvas_item;
+uniform vec4 color: source_color;
+uniform vec4 to_color: source_color;
+void vertex() {
+	// Called for every vertex the material is visible on.
+}
+
+void fragment() {
+	COLOR = texture(TEXTURE, UV);
+	if (COLOR == color) {
+		COLOR = to_color;
+	}
+
+	// Called for every pixel the material is visible on.
+}
+
+//void light() {
+//	// Called for every pixel for every light affecting the CanvasItem.
+//	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_twkrh"]
+resource_local_to_scene = true
+shader = SubResource("Shader_7krdg")
+shader_parameter/color = Color(0, 1, 0, 1)
+shader_parameter/to_color = Color(0.427451, 0.458824, 0.552941, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ewatp"]
+resource_local_to_scene = true
+shader = SubResource("Shader_7krdg")
+shader_parameter/color = Color(0, 1, 0, 1)
+shader_parameter/to_color = Color(0.427451, 0.458824, 0.552941, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_51rk4"]
+resource_local_to_scene = true
+shader = SubResource("Shader_7krdg")
+shader_parameter/color = Color(0, 1, 0, 1)
+shader_parameter/to_color = Color(0.427451, 0.458824, 0.552941, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_suntr"]
+resource_local_to_scene = true
+shader = SubResource("Shader_7krdg")
+shader_parameter/color = Color(0, 1, 0, 1)
+shader_parameter/to_color = Color(0.427451, 0.458824, 0.552941, 1)
+
+[sub_resource type="Animation" id="Animation_twkrh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Blur:material:shader_parameter/blur_force")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Borders/Border:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Borders/Border2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 164)]
+}
+
+[sub_resource type="Animation" id="Animation_vv75u"]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Blur:material:shader_parameter/blur_force")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.4, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Borders/Border:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.4, 1),
+"update": 0,
+"values": [Vector2(0, -16), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Borders/Border2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.4, 1),
+"update": 0,
+"values": [Vector2(0, 180), Vector2(0, 164)]
+}
+
+[sub_resource type="Animation" id="Animation_ewatp"]
+resource_name = "button_slider"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_twkrh"]
+_data = {
+&"RESET": SubResource("Animation_twkrh"),
+&"button_slider": SubResource("Animation_ewatp"),
+&"open": SubResource("Animation_vv75u")
+}
+
+[sub_resource type="Animation" id="Animation_suntr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Right:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(176, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerSummary:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(11, 36)]
+}
+
+[sub_resource type="Animation" id="Animation_51rk4"]
+resource_name = "slide"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Right:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.420448, 1),
+"update": 0,
+"values": [Vector2(340, 0), Vector2(176, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerSummary:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.42, 1),
+"update": 0,
+"values": [Vector2(-153, 36), Vector2(11, 36)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_suntr"]
+_data = {
+&"RESET": SubResource("Animation_suntr"),
+&"slide": SubResource("Animation_51rk4")
+}
 
 [node name="PauseMenu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_fyn71")
+
+[node name="Blur" type="ColorRect" parent="."]
+process_mode = 3
+material = SubResource("ShaderMaterial_vv75u")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0.172549)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0.0627451, 1)
+
+[node name="Borders" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Border2" type="ColorRect" parent="Borders"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.141176, 0.133333, 0.203922, 1)
+
+[node name="Border" type="ColorRect" parent="Borders"]
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 16.0
+color = Color(0.141176, 0.133333, 0.203922, 1)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Borders/Border"]
+visible = false
+modulate = Color(0.976471, 0.639216, 0.105882, 1)
+position = Vector2(160, 11)
+amount = 20
+texture = ExtResource("3_suntr")
+lifetime = 10.0
+preprocess = 10.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(160, 4)
+gravity = Vector2(0, 0)
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_suntr")
+
+[node name="Right" type="MarginContainer" parent="."]
+anchors_preset = -1
+anchor_left = 0.55
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 32
+
+[node name="VboxButtonSlider" type="VBoxContainer" parent="Right"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Panel" type="Panel" parent="Right/VboxButtonSlider"]
+custom_minimum_size = Vector2(0, 21)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_n7ba2")
+
+[node name="ResumeButton" parent="Right/VboxButtonSlider/Panel" instance=ExtResource("3_vv75u")]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_twkrh")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_animation = "left"
+hover_animation = "left"
+override_text = "Resume"
+
+[node name="Panel2" type="Panel" parent="Right/VboxButtonSlider"]
+custom_minimum_size = Vector2(0, 21)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_n7ba2")
+
+[node name="ButtonUI" parent="Right/VboxButtonSlider/Panel2" instance=ExtResource("3_vv75u")]
+material = SubResource("ShaderMaterial_ewatp")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_animation = "left"
+hover_animation = "left"
+override_text = "Settings"
+
+[node name="Panel3" type="Panel" parent="Right/VboxButtonSlider"]
+custom_minimum_size = Vector2(0, 21)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_n7ba2")
+
+[node name="PauseMenuButton" parent="Right/VboxButtonSlider/Panel3" instance=ExtResource("3_vv75u")]
+material = SubResource("ShaderMaterial_51rk4")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_animation = "left"
+hover_animation = "left"
+override_text = "Help"
+
+[node name="Panel4" type="Panel" parent="Right/VboxButtonSlider"]
+custom_minimum_size = Vector2(0, 21)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_n7ba2")
+
+[node name="MainMenuButton" parent="Right/VboxButtonSlider/Panel4" instance=ExtResource("3_vv75u")]
+material = SubResource("ShaderMaterial_suntr")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_animation = "left"
+hover_animation = "left"
+override_text = "Main menu"
+
+[node name="PlayerSummary" type="NinePatchRect" parent="."]
+anchors_preset = -1
+anchor_top = 0.2
+anchor_bottom = 0.806
+offset_left = 11.0
+offset_right = 110.0
+offset_bottom = -0.0800171
+texture = ExtResource("4_twkrh")
+region_rect = Rect2(0, 0, 7, 7)
+patch_margin_left = 3
+patch_margin_top = 4
+patch_margin_right = 3
+patch_margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerSummary"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PlayerSummary/VBoxContainer"]
+layout_mode = 2
+
+[node name="Title" type="NinePatchRect" parent="PlayerSummary/VBoxContainer"]
+custom_minimum_size = Vector2(89, 16)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("5_51rk4")
+region_rect = Rect2(0, 0, 5, 6)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 3
+
+[node name="Label" type="Label" parent="PlayerSummary/VBoxContainer/Title"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Plain"
+horizontal_alignment = 1
+
+[node name="ItemBox" type="HBoxContainer" parent="PlayerSummary/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="ItemContainer" type="NinePatchRect" parent="PlayerSummary/VBoxContainer/ItemBox"]
+custom_minimum_size = Vector2(27, 27)
+layout_mode = 2
+texture = ExtResource("5_ewatp")
+region_rect = Rect2(0, 0, 10, 11)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 3
+patch_margin_bottom = 4
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="ItemContainer2" type="NinePatchRect" parent="PlayerSummary/VBoxContainer/ItemBox"]
+custom_minimum_size = Vector2(27, 27)
+layout_mode = 2
+texture = ExtResource("5_ewatp")
+region_rect = Rect2(0, 0, 10, 11)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 3
+patch_margin_bottom = 4
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="ItemContainer3" type="NinePatchRect" parent="PlayerSummary/VBoxContainer/ItemBox"]
+custom_minimum_size = Vector2(27, 27)
+layout_mode = 2
+texture = ExtResource("5_ewatp")
+region_rect = Rect2(0, 0, 10, 11)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 3
+patch_margin_bottom = 4
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="Title2" type="NinePatchRect" parent="PlayerSummary/VBoxContainer"]
+custom_minimum_size = Vector2(89, 49)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("5_51rk4")
+region_rect = Rect2(0, 0, 5, 6)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_twkrh")
+}
+speed_scale = 3.0
+
+[node name="ButtonSliderPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_suntr")
+}
+speed_scale = 4.0
+
+[connection signal="pressed" from="Right/VboxButtonSlider/Panel/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="Right/VboxButtonSlider/Panel4/MainMenuButton" to="." method="_on_main_menu_button_pressed"]

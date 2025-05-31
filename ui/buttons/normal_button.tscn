@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cx5ofikk8rtip"]
 
-[ext_resource type="PackedScene" uid="uid://do68no0xq8mge" path="res://ui/button.tscn" id="1_ngtnh"]
+[ext_resource type="PackedScene" uid="uid://do68no0xq8mge" path="res://ui/buttons/button.tscn" id="1_ngtnh"]
 [ext_resource type="Texture2D" uid="uid://dpl2bq5yius7i" path="res://assets/images/ui/patch_rect/rect_blue.png" id="2_h05uj"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v1fhu"]

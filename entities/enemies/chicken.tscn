@@ -1,7 +1,8 @@
-[gd_scene load_steps=27 format=3 uid="uid://v8k4iceekoue"]
+[gd_scene load_steps=28 format=3 uid="uid://v8k4iceekoue"]
 
 [ext_resource type="PackedScene" uid="uid://4uymx28whucl" path="res://entities/enemies/enemy.tscn" id="1_2lc1s"]
 [ext_resource type="Script" uid="uid://c2shrf0xhbv4e" path="res://entities/enemies/chicken.gd" id="2_q0h1e"]
+[ext_resource type="PackedScene" uid="uid://b0jjn0c3bx5yt" path="res://entities/enemies/components/destroy_on_exit_screen_component.tscn" id="3_561vt"]
 [ext_resource type="Texture2D" uid="uid://cishm85n45fv4" path="res://assets/images/entities/enemies/chicken_base/chicken_captured.png" id="3_xfttu"]
 [ext_resource type="Texture2D" uid="uid://641fgsith5t7" path="res://assets/images/entities/enemies/chicken_base/chicken.png" id="3_xjn0u"]
 [ext_resource type="PackedScene" uid="uid://2m6evwq0ads8" path="res://entities/enemies/components/stress_particle.tscn" id="6_1tke6"]
@@ -183,7 +184,9 @@ up_direction = Vector2(0, 1)
 script = ExtResource("2_q0h1e")
 random_direction = true
 
-[node name="AnimatedSprite2D" parent="." index="0"]
+[node name="DestroyOnExitScreenComponent" parent="." index="0" instance=ExtResource("3_561vt")]
+
+[node name="AnimatedSprite2D" parent="." index="1"]
 unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_xfttu")
 autoplay = "default"
@@ -191,7 +194,7 @@ frame = 0
 frame_progress = 0.0
 offset = Vector2(0, -10)
 
-[node name="CapturedParticule" type="CPUParticles2D" parent="." index="1"]
+[node name="CapturedParticule" type="CPUParticles2D" parent="." index="2"]
 unique_name_in_owner = true
 position = Vector2(0, -8)
 emitting = false
@@ -212,7 +215,7 @@ scale_amount_min = 2.0
 scale_amount_max = 6.0
 scale_amount_curve = SubResource("Curve_trwhp")
 
-[node name="StressParticle" parent="." index="2" instance=ExtResource("6_1tke6")]
+[node name="StressParticle" parent="." index="3" instance=ExtResource("6_1tke6")]
 position = Vector2(5, -8)
 emitting = false
 amount = 2
@@ -226,23 +229,24 @@ scale_amount_max = 1.0
 color = Color(0.219608, 0.635294, 1, 1)
 color_ramp = null
 
-[node name="Shadow" type="Sprite2D" parent="." index="3"]
+[node name="Shadow" type="Sprite2D" parent="." index="4"]
 unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0.631373)
 z_index = -2
 texture = ExtResource("8_f53v0")
 
-[node name="CollisionShape2D" parent="." index="4"]
+[node name="CollisionShape2D" parent="." index="5"]
 position = Vector2(0, -8)
 shape = SubResource("CircleShape2D_m4jax")
 
-[node name="StateMachine" parent="." index="5" node_paths=PackedStringArray("initial_state")]
+[node name="StateMachine" parent="." index="6" node_paths=PackedStringArray("initial_state")]
 position = Vector2(0, -11)
 initial_state = NodePath("Intro")
 
 [node name="Intro" parent="StateMachine" index="0" instance=ExtResource("8_m4tkv")]
 unique_name_in_owner = true
 position = Vector2(0, 1)
+next_state_on_limit_reached = ""
 
 [node name="Attack" type="Node2D" parent="StateMachine" index="1"]
 script = ExtResource("9_78l60")
@@ -258,11 +262,11 @@ animation_player = NodePath("../../AnimationPlayer")
 capture_audio = NodePath("../../CapturedAudio")
 metadata/_custom_type_script = "uid://cnigx0jnsyk33"
 
-[node name="ThrowComponent" parent="." index="6" instance=ExtResource("10_78l60")]
+[node name="ThrowComponent" parent="." index="7" instance=ExtResource("10_78l60")]
 position = Vector2(0, -10)
 enabled = false
 
-[node name="AnimationPlayer" parent="." index="7"]
+[node name="AnimationPlayer" parent="." index="8"]
 libraries = {
 &"": SubResource("AnimationLibrary_twyc1"),
 &"chicken": SubResource("AnimationLibrary_m4jax")
