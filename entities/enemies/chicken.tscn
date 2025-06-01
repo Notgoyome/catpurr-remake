@@ -246,7 +246,7 @@ initial_state = NodePath("Intro")
 [node name="Intro" parent="StateMachine" index="0" instance=ExtResource("8_m4tkv")]
 unique_name_in_owner = true
 position = Vector2(0, 1)
-next_state_on_limit_reached = ""
+speed_intro = 30.0
 
 [node name="Attack" type="Node2D" parent="StateMachine" index="1"]
 script = ExtResource("9_78l60")
@@ -271,3 +271,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_twyc1"),
 &"chicken": SubResource("AnimationLibrary_m4jax")
 }
+
+[node name="CapturedAudio" parent="." index="9"]
+volume_db = 0.0

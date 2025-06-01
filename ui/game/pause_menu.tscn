@@ -45,25 +45,25 @@ void fragment() {
 resource_local_to_scene = true
 shader = SubResource("Shader_7krdg")
 shader_parameter/color = Color(0, 1, 0, 1)
-shader_parameter/to_color = Color(0.427451, 0.458824, 0.552941, 1)
+shader_parameter/to_color = Color(0.2, 0.223529, 0.254902, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ewatp"]
 resource_local_to_scene = true
 shader = SubResource("Shader_7krdg")
 shader_parameter/color = Color(0, 1, 0, 1)
-shader_parameter/to_color = Color(0.427451, 0.458824, 0.552941, 1)
+shader_parameter/to_color = Color(0.2, 0.223529, 0.254902, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_51rk4"]
 resource_local_to_scene = true
 shader = SubResource("Shader_7krdg")
 shader_parameter/color = Color(0, 1, 0, 1)
-shader_parameter/to_color = Color(0.427451, 0.458824, 0.552941, 1)
+shader_parameter/to_color = Color(0.2, 0.223529, 0.254902, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_suntr"]
 resource_local_to_scene = true
 shader = SubResource("Shader_7krdg")
 shader_parameter/color = Color(0, 1, 0, 1)
-shader_parameter/to_color = Color(0.427451, 0.458824, 0.552941, 1)
+shader_parameter/to_color = Color(0.2, 0.223529, 0.254902, 1)
 
 [sub_resource type="Animation" id="Animation_twkrh"]
 length = 0.001
@@ -104,6 +104,9 @@ tracks/2/keys = {
 "values": [Vector2(0, 164)]
 }
 
+[sub_resource type="Animation" id="Animation_ewatp"]
+resource_name = "button_slider"
+
 [sub_resource type="Animation" id="Animation_vv75u"]
 resource_name = "open"
 tracks/0/type = "value"
@@ -142,9 +145,6 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(0, 180), Vector2(0, 164)]
 }
-
-[sub_resource type="Animation" id="Animation_ewatp"]
-resource_name = "button_slider"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_twkrh"]
 _data = {

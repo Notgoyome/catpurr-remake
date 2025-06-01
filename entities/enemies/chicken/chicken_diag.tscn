@@ -59,7 +59,7 @@ sprite_frames = SubResource("SpriteFrames_e5sh1")
 animation = &"captured"
 
 [node name="Intro" parent="StateMachine" index="0"]
-speed_intro = 40.0
+speed_intro = 20.0
 direction = Vector2(-1, 0.5)
 
 [connection signal="state_finished" from="StateMachine/Captured" to="ThrowComponent" method="disable"]

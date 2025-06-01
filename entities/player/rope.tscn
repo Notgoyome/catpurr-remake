@@ -5,8 +5,9 @@
 [ext_resource type="Script" uid="uid://dtiab0euj0ysi" path="res://entities/player/rope/rope_animation.gd" id="3_aw0mr"]
 [ext_resource type="Texture2D" uid="uid://drdurpmfebhax" path="res://assets/images/tilemaps/tilemap_packed.png" id="3_gab08"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_8fjmc"]
-radius = 4.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aw0mr"]
+radius = 3.0
+height = 26.0
 
 [sub_resource type="Animation" id="Animation_gab08"]
 length = 0.001
@@ -111,7 +112,9 @@ collision_mask = 8
 texture = ExtResource("3_2p0gw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-shape = SubResource("CircleShape2D_8fjmc")
+position = Vector2(-5, 0)
+rotation = -1.57079
+shape = SubResource("CapsuleShape2D_aw0mr")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

@@ -1,14 +1,19 @@
 @tool
 extends ButtonUI
-
+class_name PauseMenuButton
 @export var unselect_color = Color("#333941")
 @export var select_color = Color("#d6f264")
+
+var sound_disabled: bool = false
+@onready var focus_sound: AudioStreamPlayer = %FocusSound
 
 func _ready() -> void:
 	set_color(unselect_color)
 
 func _on_focus_entered() -> void:
 	%AnimationPlayer.play("left")
+	if !(sound_disabled):
+		focus_sound.play()
 	set_color(select_color)
 
 func _on_focus_exited() -> void:
@@ -20,9 +25,9 @@ func set_color(color: Color) -> void:
 
 
 func _on_mouse_exited() -> void:
-	_on_focus_exited()
+	# _on_focus_exited()
 	pass # Replace with function body.
 
 func _on_mouse_entered() -> void:
-	_on_focus_entered()
+	# _on_focus_entered()
 	pass # Replace with function body.

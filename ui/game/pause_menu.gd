@@ -1,7 +1,7 @@
 extends CanvasLayer
 @export var UiManagerComponent: UIManagerComponent
 @onready var button_slider_player: AnimationPlayer = %ButtonSliderPlayer
-@onready var resume_button: ButtonUI = %ResumeButton
+@onready var resume_button: PauseMenuButton = %ResumeButton
 
 var is_open: bool = false
 func _ready() -> void:
@@ -24,7 +24,9 @@ func open() -> void:
 	button_slider_player.play("slide")
 	UiManagerComponent.set_ui(self, null, 5, false)
 	get_tree().paused = true
+	resume_button.sound_disabled = true
 	resume_button.grab_focus()
+	resume_button.sound_disabled = false
 
 func close() -> void:
 	if not is_open or any_animation_playing():

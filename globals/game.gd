@@ -12,58 +12,66 @@ var stop_time_priorty = 0
 # 20 - pause menu
 
 var current_score : int = 0:
-    set(value):
-        current_score = value
-        on_score_changed.emit(value)
+	set(value):
+		current_score = value
+		on_score_changed.emit(value)
 
 var _current_time: float = 0.0
 
 var current_level: Level
 var player: Player :
-    set(value):
-        player = value
-        player_init.emit(value)
+	set(value):
+		player = value
+		player_init.emit(value)
 
 var seed_string: String = ""
 
-func init(new_seed = "") -> void:
-    if new_seed == "":
-        new_seed = str(randi_range(0, 1000000))
+var game_time: float = 0.0
 
-    seed(new_seed.hash())
-    seed_string = new_seed
-    TransitionManager.transition_to_scene(Game.start_scene)
-    current_score = 0
-    _current_time = Time.get_ticks_msec() / 1000.0
-    pass
+func _ready() -> void:
+	pass
+
+func _process(delta: float) -> void:
+	game_time += delta
+
+func init(new_seed = "") -> void:
+	if new_seed == "":
+		new_seed = str(randi_range(0, 1000000))
+
+	seed(new_seed.hash())
+	seed_string = new_seed
+	TransitionManager.transition_to_scene(Game.start_scene)
+	current_score = 0
+	_current_time = Time.get_ticks_msec() / 1000.0
+	pass
 
 
 var main_menu_scene: PackedScene = load("res://ui/main_menu.tscn")
 
 func go_to_menu() -> void:
-    TransitionManager.transition_to_scene(main_menu_scene)
-    pass # Replace with function body.
+	TransitionManager.transition_to_scene(main_menu_scene)
+	pass # Replace with function body.
 
 
 func init_level(level: Level) -> void:
-    current_level = level
-    current_score = 0
+	current_level = level
+	current_score = 0
 
 func stop_time(priority: int = 0) -> void:
-    if priority > stop_time_priorty:
-        get_tree().paused = true
-        stop_time_priorty = priority
+	if priority > stop_time_priorty:
+		get_tree().paused = true
+		stop_time_priorty = priority
 
 func resume_time(priority: int = 0) -> void:
-    if priority >= stop_time_priorty:
-        get_tree().paused = false
-        stop_time_priorty = 0
+	if priority >= stop_time_priorty:
+		get_tree().paused = false
+		stop_time_priorty = 0
 
 func get_total_time() -> float:
-    return Time.get_ticks_msec() / 1000.0 - _current_time
+	return game_time
 
 func get_str_time() -> String:
-    var total_time = get_total_time()
-    var minutes = int(total_time / 60)
-    var seconds = int(total_time) % 60
-    return str(minutes) + "m" + str(seconds) + "s"
+	var total_time = get_total_time()
+	var minutes = int(total_time / 60)
+	var seconds = int(total_time) % 60
+	return str(minutes) + "m" + str(seconds) + "s"
