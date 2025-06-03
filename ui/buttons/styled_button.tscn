@@ -1,10 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://50bn7uky7lpb"]
+[gd_scene load_steps=8 format=3 uid="uid://50bn7uky7lpb"]
 
-[ext_resource type="PackedScene" uid="uid://do68no0xq8mge" path="res://ui/buttons/button.tscn" id="1_2qhvc"]
-[ext_resource type="Theme" uid="uid://7jlfgdk07rcg" path="res://ui/buttons/button_theme.tres" id="2_8ctdj"]
-[ext_resource type="Texture2D" uid="uid://b8uksbusrtwmh" path="res://assets/images/ui/game/pause_menu/menu_button.png" id="3_4liac"]
-[ext_resource type="Script" uid="uid://balk6d8mqw1fy" path="res://ui/pause/pause_menu_button.gd" id="4_wbm36"]
-[ext_resource type="AudioStream" uid="uid://duf6rm204u0x2" path="res://assets/sounds/ui/select.ogg" id="5_g5mjt"]
+[ext_resource type="PackedScene" uid="uid://do68no0xq8mge" path="res://ui/buttons/button.tscn" id="1_r0pxl"]
+[ext_resource type="Texture2D" uid="uid://b8uksbusrtwmh" path="res://assets/images/ui/game/pause_menu/menu_button.png" id="3_tmell"]
+[ext_resource type="Script" uid="uid://balk6d8mqw1fy" path="res://ui/buttons/styled_button.gd" id="4_dkrsi"]
 
 [sub_resource type="Shader" id="Shader_7krdg"]
 code = "shader_type canvas_item;
@@ -36,7 +34,7 @@ shader_parameter/color = Color(0, 1, 0, 1)
 shader_parameter/to_color = Color(0.2, 0.223529, 0.254902, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wbm36"]
-texture = ExtResource("3_4liac")
+texture = ExtResource("3_tmell")
 texture_margin_left = 17.0
 texture_margin_top = 2.0
 texture_margin_right = 17.0
@@ -48,46 +46,26 @@ region_rect = Rect2(0, 0, 35, 21)
 [sub_resource type="FontVariation" id="FontVariation_4liac"]
 spacing_bottom = 4
 
-[node name="PauseMenuButton" instance=ExtResource("1_2qhvc")]
+[node name="StyledButton" instance=ExtResource("1_r0pxl")]
 material = SubResource("ShaderMaterial_wbm36")
 custom_minimum_size = Vector2(0, 21)
 offset_right = 72.0
 offset_bottom = 21.0
-theme = ExtResource("2_8ctdj")
 theme_override_styles/focus = SubResource("StyleBoxTexture_wbm36")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_wbm36")
 theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_wbm36")
 theme_override_styles/hover = SubResource("StyleBoxTexture_wbm36")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_wbm36")
 theme_override_styles/normal = SubResource("StyleBoxTexture_wbm36")
-script = ExtResource("4_wbm36")
+script = ExtResource("4_dkrsi")
 unselect_color = Color(0.2, 0.223529, 0.254902, 1)
 select_color = Color(0.976471, 0.639216, 0.105882, 1)
 focus_animation = ""
 hover_animation = ""
 
-[node name="FocusSound" type="AudioStreamPlayer" parent="." index="0"]
-unique_name_in_owner = true
-stream = ExtResource("5_g5mjt")
-volume_db = -4.0
-max_polyphony = 2
-
-[node name="ColorRect" parent="." index="2"]
-mouse_filter = 2
-
-[node name="TextureRect" parent="ColorRect" index="0"]
-offset_left = -33.0
-offset_top = -35.0
-offset_right = 279.0
-offset_bottom = 145.0
-mouse_filter = 2
-
-[node name="ButtonLabel" parent="." index="3"]
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 0.0
-offset_bottom = 0.0
+[node name="ButtonLabel" parent="." index="2"]
 theme_override_fonts/font = SubResource("FontVariation_4liac")
+text = "Play"
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

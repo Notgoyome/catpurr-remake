@@ -4,9 +4,6 @@ class_name PauseMenuButton
 @export var unselect_color = Color("#333941")
 @export var select_color = Color("#d6f264")
 
-var sound_disabled: bool = false
-@onready var focus_sound: AudioStreamPlayer = %FocusSound
-
 func _ready() -> void:
 	set_color(unselect_color)
 

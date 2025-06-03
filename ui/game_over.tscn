@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c6bqneaq6754e"]
+[gd_scene load_steps=24 format=3 uid="uid://c6bqneaq6754e"]
 
 [ext_resource type="Script" uid="uid://01vcv0o006n5" path="res://ui/game_over.gd" id="1_5eixk"]
 [ext_resource type="Theme" uid="uid://cldnd0m2hso1b" path="res://assets/theme.tres" id="2_xjda6"]
@@ -7,44 +7,39 @@
 [ext_resource type="Texture2D" uid="uid://8f3hqubrkixq" path="res://assets/images/ui/patch_rect/stitch_line/blue_stitch_line.png" id="8_tb368"]
 [ext_resource type="Texture2D" uid="uid://efoj7srqyfpj" path="res://assets/images/ui/patch_rect/stitch_line/green_lemon_stitch_line.png" id="9_lgxpc"]
 [ext_resource type="Texture2D" uid="uid://b0gnanyr6ot3b" path="res://assets/images/ui/patch_rect/stitch_line/cat_orange_stitch_line.png" id="10_rcx4q"]
-[ext_resource type="PackedScene" uid="uid://bfu7q3wwlayc4" path="res://ui/game_over/retry_button.tscn" id="11_cnsmc"]
+[ext_resource type="PackedScene" uid="uid://lp0k0gt8eiiv" path="res://ui/buttons/stripped_button.tscn" id="11_cnsmc"]
 [ext_resource type="Texture2D" uid="uid://dsr444e8d5iyb" path="res://assets/images/ui/patch_rect/rect_white.png" id="11_l87h4"]
 [ext_resource type="Texture2D" uid="uid://pbovsig4niox" path="res://assets/images/entities/player/cat_icon.png" id="11_v1fhu"]
 [ext_resource type="Texture2D" uid="uid://e76bltm5bblo" path="res://assets/images/ui/patch_rect/stitch_line/leather_stitch_line.png" id="12_cnsmc"]
-[ext_resource type="PackedScene" uid="uid://bs5wnce441h7q" path="res://ui/game_over/main_button.tscn" id="13_v1fhu"]
+[ext_resource type="Texture2D" uid="uid://dpl2bq5yius7i" path="res://assets/images/ui/patch_rect/rect_blue.png" id="12_v1fhu"]
+[ext_resource type="Texture2D" uid="uid://ci6a8w1s7qxet" path="res://assets/images/ui/patch_rect/rect_grey.png" id="13_v1fhu"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_55k1u"]
 content_margin_top = 2.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lgxpc"]
 
-[sub_resource type="Shader" id="Shader_7krdg"]
-code = "shader_type canvas_item;
-uniform vec4 color: source_color;
-uniform vec4 to_color: source_color;
-void vertex() {
-	// Called for every vertex the material is visible on.
-}
+[sub_resource type="FontVariation" id="FontVariation_l87h4"]
 
-void fragment() {
-	COLOR = texture(TEXTURE, UV);
-	if (COLOR == color) {
-		COLOR = to_color;
-	}
+[sub_resource type="FontVariation" id="FontVariation_cnsmc"]
+base_font = SubResource("FontVariation_l87h4")
+spacing_top = -10
 
-	// Called for every pixel the material is visible on.
-}
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xtpiw"]
+texture = ExtResource("12_v1fhu")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+region_rect = Rect2(0, 0, 4, 5)
 
-//void light() {
-//	// Called for every pixel for every light affecting the CanvasItem.
-//	// Uncomment to replace the default light processing function with this one.
-//}
-"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7krdg"]
-shader = SubResource("Shader_7krdg")
-shader_parameter/color = Color(0.976471, 0.639216, 0.105882, 1)
-shader_parameter/to_color = Color(0.976471, 0.639216, 0.105882, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cnsmc"]
+texture = ExtResource("13_v1fhu")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+region_rect = Rect2(0, 0, 4, 5)
 
 [sub_resource type="Animation" id="Animation_akjlf"]
 length = 0.001
@@ -321,30 +316,19 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -100.0
-offset_top = -21.0
+offset_top = -22.0
 offset_right = 100.0
 offset_bottom = -7.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_constants/separation = 5
+theme_override_constants/separation = 8
 alignment = 1
 
 [node name="Panel" type="Panel" parent="Control/NinePatch/Down"]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 
-[node name="RetryButton" parent="Control/NinePatch/Down/Panel" instance=ExtResource("11_cnsmc")]
-unique_name_in_owner = true
-material = SubResource("ShaderMaterial_7krdg")
-layout_mode = 0
-offset_bottom = 14.0
-
-[node name="Panel2" type="Panel" parent="Control/NinePatch/Down"]
-custom_minimum_size = Vector2(32, 0)
-layout_mode = 2
-
-[node name="PlayButton" parent="Control/NinePatch/Down/Panel2" instance=ExtResource("13_v1fhu")]
-material = SubResource("ShaderMaterial_7krdg")
+[node name="Retry" parent="Control/NinePatch/Down/Panel" instance=ExtResource("11_cnsmc")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -353,6 +337,35 @@ offset_right = 0.0
 offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = SubResource("FontVariation_cnsmc")
+theme_override_styles/focus = SubResource("StyleBoxTexture_xtpiw")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_xtpiw")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_xtpiw")
+theme_override_styles/hover = SubResource("StyleBoxTexture_xtpiw")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_xtpiw")
+theme_override_styles/normal = SubResource("StyleBoxTexture_xtpiw")
+override_text = "Play"
+
+[node name="Panel2" type="Panel" parent="Control/NinePatch/Down"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+
+[node name="Retry" parent="Control/NinePatch/Down/Panel2" instance=ExtResource("11_cnsmc")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/focus = SubResource("StyleBoxTexture_xtpiw")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_xtpiw")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_xtpiw")
+theme_override_styles/hover = SubResource("StyleBoxTexture_xtpiw")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_xtpiw")
+theme_override_styles/normal = SubResource("StyleBoxTexture_cnsmc")
+override_text = "Menu"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true

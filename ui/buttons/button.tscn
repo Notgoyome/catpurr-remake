@@ -1,8 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://do68no0xq8mge"]
+[gd_scene load_steps=13 format=3 uid="uid://do68no0xq8mge"]
 
-[ext_resource type="Theme" uid="uid://cldnd0m2hso1b" path="res://assets/theme.tres" id="1_0dg7g"]
+[ext_resource type="Theme" uid="uid://7jlfgdk07rcg" path="res://ui/buttons/button_theme.tres" id="1_x66oa"]
 [ext_resource type="Script" uid="uid://dr3215ojpl071" path="res://ui/buttons/button.gd" id="2_7krdg"]
-[ext_resource type="Texture2D" uid="uid://dv22fr0gqt0yw" path="res://assets/images/particles/diagonal_row.png" id="4_gcioa"]
+[ext_resource type="AudioStream" uid="uid://duf6rm204u0x2" path="res://assets/sounds/ui/select.ogg" id="3_5gjou"]
 
 [sub_resource type="Shader" id="Shader_7krdg"]
 code = "shader_type canvas_item;
@@ -31,6 +31,13 @@ void fragment() {
 shader = SubResource("Shader_7krdg")
 shader_parameter/color = Color(0.976471, 0.639216, 0.105882, 1)
 shader_parameter/to_color = Color(0.976471, 0.639216, 0.105882, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_l87h4"]
+
+[sub_resource type="FontVariation" id="FontVariation_x66oa"]
+base_font = SubResource("FontVariation_l87h4")
+spacing_top = -10
+spacing_bottom = -10
 
 [sub_resource type="Animation" id="Animation_fxfmk"]
 length = 0.001
@@ -97,108 +104,25 @@ _data = {
 &"up": SubResource("Animation_b44ym")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_p172q"]
-
-[sub_resource type="Animation" id="Animation_uan0n"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect/TextureRect:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("ColorRect/TextureRect:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -28)]
-}
-
-[sub_resource type="Animation" id="Animation_p172q"]
-resource_name = "on_focus_2"
-length = 0.25
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect/TextureRect:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("ColorRect/TextureRect:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(1, 0.965936),
-"update": 0,
-"values": [Vector2(0, -28), Vector2(-8, -28)]
-}
-
-[sub_resource type="Animation" id="Animation_gcioa"]
-resource_name = "start"
-length = 0.25
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect/TextureRect:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("ColorRect/TextureRect:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(1.68179, 1),
-"update": 0,
-"values": [Vector2(0, -28), Vector2(-8, -28)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_uan0n"]
-_data = {
-&"RESET": SubResource("Animation_uan0n"),
-&"on_focus_2": SubResource("Animation_p172q"),
-&"start": SubResource("Animation_gcioa")
-}
+[sub_resource type="FontVariation" id="FontVariation_5gjou"]
+spacing_bottom = 4
 
 [node name="ButtonUI" type="Button"]
 material = SubResource("ShaderMaterial_7krdg")
 offset_right = 52.0
-offset_bottom = 22.0
-theme = ExtResource("1_0dg7g")
+offset_bottom = 16.0
+theme = ExtResource("1_x66oa")
+theme_override_fonts/font = SubResource("FontVariation_x66oa")
 text = " "
 script = ExtResource("2_7krdg")
 focus_animation = "left"
 hover_animation = "left"
+
+[node name="FocusSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_5gjou")
+volume_db = -6.0
+max_polyphony = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
@@ -207,60 +131,19 @@ libraries = {
 }
 speed_scale = 1.5
 
-[node name="ColorRect" type="ColorRect" parent="."]
-clip_children = 1
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 3.0
-offset_top = 3.0
-offset_right = -3.0
-offset_bottom = -4.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TextureRect" type="TextureRect" parent="ColorRect"]
-visible = false
-modulate = Color(0.866667, 0.427451, 0.152941, 1)
-material = SubResource("ShaderMaterial_p172q")
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -23.0
-offset_top = -35.5
-offset_right = 289.0
-offset_bottom = 144.5
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("4_gcioa")
-stretch_mode = 1
-
 [node name="ButtonLabel" type="Label" parent="."]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 2.0
-offset_top = 2.0
-offset_right = -2.0
-offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 4
-text = "Play"
+theme_override_fonts/font = SubResource("FontVariation_5gjou")
+text = "Test"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="DotAnimationPlayer" type="AnimationPlayer" parent="."]
-unique_name_in_owner = true
-libraries = {
-&"": SubResource("AnimationLibrary_uan0n")
-}
 
 [connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
 [connection signal="focus_exited" from="." to="." method="_on_focus_exited"]

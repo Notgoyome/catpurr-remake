@@ -1,0 +1,147 @@
+[gd_scene load_steps=10 format=3 uid="uid://lp0k0gt8eiiv"]
+
+[ext_resource type="PackedScene" uid="uid://do68no0xq8mge" path="res://ui/buttons/button.tscn" id="1_uovj7"]
+[ext_resource type="Theme" uid="uid://cldnd0m2hso1b" path="res://assets/theme.tres" id="2_0q7mg"]
+[ext_resource type="Texture2D" uid="uid://dv22fr0gqt0yw" path="res://assets/images/particles/diagonal_row.png" id="2_i5jf1"]
+[ext_resource type="Script" uid="uid://dx1w7wdwaahf1" path="res://ui/buttons/stripped_button.gd" id="2_tneaa"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p172q"]
+
+[sub_resource type="Animation" id="Animation_uan0n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect/TextureRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect/TextureRect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -28)]
+}
+
+[sub_resource type="Animation" id="Animation_p172q"]
+resource_name = "on_focus_2"
+length = 0.25
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect/TextureRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect/TextureRect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 0.965936),
+"update": 0,
+"values": [Vector2(0, -28), Vector2(-8, -28)]
+}
+
+[sub_resource type="Animation" id="Animation_gcioa"]
+resource_name = "start"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect/TextureRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect/TextureRect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1.68179, 1),
+"update": 0,
+"values": [Vector2(0, -28), Vector2(-8, -28)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uan0n"]
+_data = {
+&"RESET": SubResource("Animation_uan0n"),
+&"on_focus_2": SubResource("Animation_p172q"),
+&"start": SubResource("Animation_gcioa")
+}
+
+[node name="StrippedButton" instance=ExtResource("1_uovj7")]
+theme = ExtResource("2_0q7mg")
+script = ExtResource("2_tneaa")
+override_text = "AZE"
+
+[node name="ColorRect" type="ColorRect" parent="." index="2"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect" index="0"]
+visible = false
+modulate = Color(0.866667, 0.427451, 0.152941, 1)
+material = SubResource("ShaderMaterial_p172q")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.0
+offset_top = -35.5
+offset_right = 289.0
+offset_bottom = 144.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_i5jf1")
+stretch_mode = 1
+
+[node name="DotAnimationPlayer" type="AnimationPlayer" parent="." index="3"]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_uan0n")
+}
+
+[node name="ButtonLabel" parent="." index="4"]
+offset_top = 1.0
+offset_bottom = -2.0
+text = "AZE"
