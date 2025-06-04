@@ -242,6 +242,7 @@ script = ExtResource("4_mpktj")
 [node name="HealthComponent" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("9_bectd")
+initial_hp = 1
 invincible_time = 2.0
 
 [node name="BlinkComponent" type="Node" parent="HealthComponent" node_paths=PackedStringArray("blink_node")]
@@ -259,8 +260,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_7thud")
 }
 speed_scale = 2.0
-
-[node name="Node2D" type="Node2D" parent="."]
 
 [connection signal="state_enter" from="StateMachine/Jumping" to="." method="_on_jumping_state_enter"]
 [connection signal="on_returning" from="PlayerBody/CaptureComponent/Rope" to="StateMachine/Capturing" method="_on_rope_on_returning"]

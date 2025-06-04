@@ -1,10 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://cpwau54raobl4"]
+[gd_scene load_steps=8 format=3 uid="uid://cpwau54raobl4"]
 
 [ext_resource type="Script" uid="uid://3s6hkk863ghb" path="res://ui/main_menu.gd" id="1_0dkrt"]
 [ext_resource type="PackedScene" uid="uid://boppjtnktgfvk" path="res://ui/components/ui_manager_component.tscn" id="1_t7e0r"]
 [ext_resource type="Theme" uid="uid://cldnd0m2hso1b" path="res://assets/theme.tres" id="3_rmr83"]
 [ext_resource type="Texture2D" uid="uid://bvr24xd2vf8qx" path="res://assets/images/ui/catpurr.png" id="3_wk0pr"]
+[ext_resource type="Texture2D" uid="uid://iytucrxh4cmo" path="res://assets/images/ui/patch_rect/rect_black.png" id="5_ei257"]
 [ext_resource type="PackedScene" uid="uid://lp0k0gt8eiiv" path="res://ui/buttons/stripped_button.tscn" id="5_ubpvv"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p8ri8"]
+texture = ExtResource("5_ei257")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(0, 0, 5, 6)
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -57,8 +66,9 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -0.5
 offset_right = 0.0
-offset_bottom = 1.0
+offset_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 override_text = "Play"
@@ -74,11 +84,24 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -0.5
 offset_right = 0.0
-offset_bottom = 1.0
+offset_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/focus = SubResource("StyleBoxTexture_p8ri8")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_p8ri8")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_p8ri8")
+theme_override_styles/hover = SubResource("StyleBoxTexture_p8ri8")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_p8ri8")
+theme_override_styles/normal = SubResource("StyleBoxTexture_p8ri8")
 override_text = "Quit"
+
+[node name="TextureRect" parent="BoxContainer/ButtonBox/Panel3/QuitButton/ColorRect" index="0"]
+modulate = Color(0.2, 0.223529, 0.254902, 1)
+
+[node name="ButtonLabel" parent="BoxContainer/ButtonBox/Panel3/QuitButton" index="4"]
+text = "Quit"
 
 [node name="Panel" type="Control" parent="."]
 anchors_preset = 0
@@ -93,3 +116,5 @@ offset_bottom = 48.0
 texture = ExtResource("3_wk0pr")
 
 [connection signal="pressed" from="BoxContainer/ButtonBox/Panel/PlayButton" to="." method="_on_play_button_pressed"]
+
+[editable path="BoxContainer/ButtonBox/Panel3/QuitButton"]

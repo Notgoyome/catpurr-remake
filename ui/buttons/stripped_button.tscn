@@ -115,6 +115,7 @@ offset_right = -3.0
 offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="TextureRect" type="TextureRect" parent="ColorRect" index="0"]
 visible = false
@@ -127,11 +128,12 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -23.0
-offset_top = -35.5
+offset_top = -32.5
 offset_right = 289.0
-offset_bottom = 144.5
+offset_bottom = 147.5
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("2_i5jf1")
 stretch_mode = 1
 

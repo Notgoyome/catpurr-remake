@@ -30,6 +30,11 @@ func _on_focus_entered() -> void:
 		focus_sound.play()
 	animation_player.play(focus_animation)
 
+func grab_focus_without_sound() -> void:
+	sound_disabled = true
+	grab_focus()
+	sound_disabled = false
+
 func _on_focus_exited() -> void:
 	if disable_animation:
 		return

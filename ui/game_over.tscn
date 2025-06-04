@@ -328,7 +328,8 @@ alignment = 1
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 
-[node name="Retry" parent="Control/NinePatch/Down/Panel" instance=ExtResource("11_cnsmc")]
+[node name="RetryButton" parent="Control/NinePatch/Down/Panel" instance=ExtResource("11_cnsmc")]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -344,13 +345,31 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_xtpiw")
 theme_override_styles/hover = SubResource("StyleBoxTexture_xtpiw")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_xtpiw")
 theme_override_styles/normal = SubResource("StyleBoxTexture_xtpiw")
+focus_animation = ""
+hover_animation = ""
 override_text = "Play"
+
+[node name="ColorRect" parent="Control/NinePatch/Down/Panel/RetryButton" index="2"]
+offset_left = 1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = -2.0
+
+[node name="TextureRect" parent="Control/NinePatch/Down/Panel/RetryButton/ColorRect" index="0"]
+modulate = Color(0.156863, 0.360784, 0.768627, 1)
+offset_left = -15.0
+offset_top = -34.0
+offset_right = 297.0
+offset_bottom = 146.0
+
+[node name="ButtonLabel" parent="Control/NinePatch/Down/Panel/RetryButton" index="4"]
+text = "Play"
 
 [node name="Panel2" type="Panel" parent="Control/NinePatch/Down"]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 
-[node name="Retry" parent="Control/NinePatch/Down/Panel2" instance=ExtResource("11_cnsmc")]
+[node name="Menu" parent="Control/NinePatch/Down/Panel2" instance=ExtResource("11_cnsmc")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -359,13 +378,31 @@ offset_right = 0.0
 offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/focus = SubResource("StyleBoxTexture_xtpiw")
-theme_override_styles/disabled = SubResource("StyleBoxTexture_xtpiw")
-theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_xtpiw")
-theme_override_styles/hover = SubResource("StyleBoxTexture_xtpiw")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_xtpiw")
+theme_override_styles/focus = SubResource("StyleBoxTexture_cnsmc")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_cnsmc")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_cnsmc")
+theme_override_styles/hover = SubResource("StyleBoxTexture_cnsmc")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_cnsmc")
 theme_override_styles/normal = SubResource("StyleBoxTexture_cnsmc")
+focus_animation = ""
+hover_animation = ""
 override_text = "Menu"
+
+[node name="ColorRect" parent="Control/NinePatch/Down/Panel2/Menu" index="2"]
+offset_left = 1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = -2.0
+
+[node name="TextureRect" parent="Control/NinePatch/Down/Panel2/Menu/ColorRect" index="0"]
+modulate = Color(0.427451, 0.458824, 0.552941, 1)
+offset_left = -15.0
+offset_top = -34.0
+offset_right = 297.0
+offset_bottom = 146.0
+
+[node name="ButtonLabel" parent="Control/NinePatch/Down/Panel2/Menu" index="4"]
+text = "Menu"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
@@ -373,5 +410,10 @@ libraries = {
 &"": SubResource("AnimationLibrary_akjlf")
 }
 
+[connection signal="pressed" from="Control/NinePatch/Down/Panel/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="Control/NinePatch/Down/Panel2/Menu" to="." method="_on_menu_button_pressed"]
+
 [editable path="Control/NinePatch/PanelContainer/HBoxContainer/Left/VBoxContainer/Time"]
 [editable path="Control/NinePatch/PanelContainer/HBoxContainer/Left/VBoxContainer/Seed"]
+[editable path="Control/NinePatch/Down/Panel/RetryButton"]
+[editable path="Control/NinePatch/Down/Panel2/Menu"]

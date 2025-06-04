@@ -65,7 +65,6 @@ hover_animation = ""
 
 [node name="ButtonLabel" parent="." index="2"]
 theme_override_fonts/font = SubResource("FontVariation_4liac")
-text = "Play"
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

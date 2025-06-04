@@ -3,7 +3,7 @@ class_name GameOver
 
 @export var ui_manager_component : UIManagerComponent
 
-@onready var retry_button: Button = %RetryButton
+@onready var retry_button: ButtonUI = %RetryButton
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 
 @onready var score: TextValueUI = %Score
@@ -22,8 +22,7 @@ func _on_player_on_player_dying_animation_finished() -> void:
 
 	animation_player.play("pop")
 	await animation_player.animation_finished
-
-	retry_button.grab_focus()
+	retry_button.grab_focus_without_sound()
 
 func set_game_data() -> void:
 	score.set_value(Game.current_score)
@@ -32,8 +31,8 @@ func set_game_data() -> void:
 
 
 func _on_retry_button_pressed() -> void:
-	pass # Replace with function body.
+	Game.init()
 
 
 func _on_menu_button_pressed() -> void:
-	pass # Replace with function body.
+	Game.go_to_menu()
